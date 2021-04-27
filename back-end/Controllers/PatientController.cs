@@ -6,40 +6,77 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
-
+using DTMBackend.DataBase;
 namespace DTMBackend.Controllers
 {
     [ApiController]
     
     public class PatientController: ControllerBase
     {
-        List<Patient> _listPatient = new List<Patient>()
-        {
-            new Patient(){Nome="Elielson", Idade=22},
-            new Patient(){Nome="Fernando", Idade=23}
-        };
+        private IListPatients _listPatient;
 
+        public PatientController(IListPatients listPatients){
+            _listPatient = listPatients;
+        }
+    
         [HttpGet]
         [Route("api/[controller]")]
         public IActionResult Get()
         {
-            if(_listPatient.Count == 0)
+            if(_listPatient.GetListPatient().Count == 0)
             {
-                return NotFound("Vazio");
+                return NotFound("Empty list");
             }
-            return Ok(_listPatient);
+            return Ok(_listPatient.GetListPatient());
         }
 
         [HttpGet]
-        [Route("api/[controller]/{nome}")]
-        public IActionResult Get(string nome)
+        [Route("api/[controller]/{name}")]
+        public IActionResult Get(string name)
         {
-            Patient pacientFind = _listPatient.Find(x => x.Nome == nome);
+            Patient pacientFind = _listPatient.GetPatient(name);
             if (pacientFind == null)
             {
-                return NotFound("Paciente não encontrado");
+                return NotFound("Not found");
             }
             return Ok(pacientFind);
+        }
+
+        [HttpPost]
+        [Route("api/[controller]")]
+        public IActionResult Post(Patient newPatient)
+        {
+            _listPatient.AddPatient(newPatient);
+            if (newPatient == null)
+            {
+                return NotFound("Empty patient");
+            }
+            return Ok(_listPatient.GetListPatient());
+        }
+
+        [HttpPatch]
+        [Route("api/[controller]/{name}")]
+        public IActionResult Patch(string name, Patient newPatient)
+        {
+            Console.WriteLine(newPatient);
+            if (newPatient == null)
+            {
+                return NotFound("Not found");
+            }
+            _listPatient.ModifyPatient(name, newPatient);
+            return Ok(newPatient);
+        }
+
+        [HttpDelete]
+        [Route("api/[controller]/{name}")]
+        public IActionResult Delete(string name)
+        {
+            _listPatient.DeletePatient(name);
+            if (_listPatient.GetListPatient().Count == 0)
+            {
+                return NotFound("Lista de pacientes vazia");
+            }
+            return Ok(_listPatient.GetListPatient());
         }
     }
 }

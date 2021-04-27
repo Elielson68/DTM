@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using DTMBackend.DataBase;
 namespace DTMBackend
 {
     public class Startup
@@ -24,6 +24,7 @@ namespace DTMBackend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSingleton<IListPatients, ListPatients>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

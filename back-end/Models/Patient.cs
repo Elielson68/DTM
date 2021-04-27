@@ -8,7 +8,7 @@ namespace DTMBackend.Models
 {
     public class Patient
     {
-        public string Nome { get; set; }
-        public int Idade { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
     }
 }
