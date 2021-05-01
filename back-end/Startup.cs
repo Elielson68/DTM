@@ -25,6 +25,8 @@ namespace DTMBackend
         {
             services.AddControllersWithViews();
             services.AddSingleton<IListPatients, ListPatients>();
+            services.AddSingleton<IListUsers, ListUsers>();
+            services.AddSingleton<IListExams, ListExams>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
