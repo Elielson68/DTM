@@ -78,7 +78,7 @@ namespace DTMBackend.Controllers
             {
                 return NotFound("Lista de pacientes vazia");
             }
-            return DayOfWeek(_listUser.GetListUser());
+            return Ok(_listUser.GetListUser());
         }
     }
 }
