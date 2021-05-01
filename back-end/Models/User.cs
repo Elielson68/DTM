@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTMBackend.Models
 {
-    public class Patient
+    public class User
     {
         public string Name { get; set; }
         public string Email { get; set; }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using System.Threading.Tasks;
 using DTMBackend.DataBase;
+
 namespace DTMBackend.Controllers
 {
     [ApiController]
@@ -15,7 +16,8 @@ namespace DTMBackend.Controllers
     {
         private IListPatients _listPatient;
 
-        public PatientController(IListPatients listPatients){
+        public PatientController(IListPatients listPatients)
+        {
             _listPatient = listPatients;
         }
     

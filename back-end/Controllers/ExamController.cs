@@ -33,10 +33,10 @@ namespace DTMBackend.Controllers
         }
 
         [HttpGet]
-        [Route("api/[controller]/{name}")]
-        public IActionResult Get(string name)
+        [Route("api/[controller]/{date}")]
+        public IActionResult Get(string date)
         {
-            Exam examFind = _listExam.GetExam(name);
+            Exam examFind = _listExam.GetExam(date);
             if (examFind == null)
             {
                 return NotFound("Not found");
@@ -57,23 +57,23 @@ namespace DTMBackend.Controllers
         }
 
         [HttpPatch]
-        [Route("api/[controller]/{name}")]
-        public IActionResult Patch(string name, Exam newExam)
+        [Route("api/[controller]/{date}")]
+        public IActionResult Patch(string date, Exam newExam)
         {
             Console.WriteLine(newExam);
             if (newExam == null)
             {
                 return NotFound("Not found");
             }
-            _listExam.ModifyExam(name, newExam);
+            _listExam.ModifyExam(date, newExam);
             return Ok(newExam);
         }
 
         [HttpDelete]
-        [Route("api/[controller]/{name}")]
-        public IActionResult Delete(string name)
+        [Route("api/[controller]/{date}")]
+        public IActionResult Delete(string date)
         {
-            _listExam.DeleteExam(name);
+            _listExam.DeleteExam(date);
             if (_listExam.GetListExam().Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");

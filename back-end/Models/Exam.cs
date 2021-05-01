@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DTMBackend.Models
 {
-    public class Patient
+    public class Exam
     {
         public string Date { get; set; }
-        public double OpenMeasurementPx {get; set;}
-        public double ShutMeasurementPx  {get; set;}
-        public double ResultMeasurementCm {get; set;}
+        public double OpenMeasurementPx { get; set; }
+        public double ShutMeasurementPx  { get; set; }
+        public double ResultMeasurementCm { get; set; }
     }
 }
