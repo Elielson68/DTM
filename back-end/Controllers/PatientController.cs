@@ -48,11 +48,11 @@ namespace DTMBackend.Controllers
         [Route("api/[controller]")]
         public IActionResult Post(Patient newPatient)
         {
-            _listPatient.AddPatient(newPatient);
             if (newPatient == null)
             {
                 return NotFound("Empty patient");
             }
+            _listPatient.AddPatient(newPatient);
             return Ok(_listPatient.GetListPatient());
         }
 
@@ -60,7 +60,6 @@ namespace DTMBackend.Controllers
         [Route("api/[controller]/{name}")]
         public IActionResult Patch(string name, Patient newPatient)
         {
-            Console.WriteLine(newPatient);
             if (newPatient == null)
             {
                 return NotFound("Not found");
@@ -73,11 +72,11 @@ namespace DTMBackend.Controllers
         [Route("api/[controller]/{name}")]
         public IActionResult Delete(string name)
         {
-            _listPatient.DeletePatient(name);
             if (_listPatient.GetListPatient().Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
+            _listPatient.DeletePatient(name);
             return Ok(_listPatient.GetListPatient());
         }
     }

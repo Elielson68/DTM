@@ -26,8 +26,6 @@ namespace DTMBackend.DataBase
 
         public void ModifyUser(string name, User newUser) {
             User modifyUser = _listUser.FirstOrDefault(x => x.Name == name);
-            Console.WriteLine(newUser.Name);
-            Console.WriteLine(newUser.RegisteredNumber);
             modifyUser.Name = newUser.Name;
             modifyUser.RegisteredNumber = newUser.RegisteredNumber;
         }

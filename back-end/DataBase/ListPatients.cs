@@ -25,8 +25,6 @@ namespace DTMBackend.DataBase
 
         public void ModifyPatient(string name, Patient newPatient){
             Patient modifyPatient = _listPatient.FirstOrDefault(x => x.Name == name);
-            Console.WriteLine(newPatient.Name);
-            Console.WriteLine(newPatient.Age);
             modifyPatient.Name = newPatient.Name;
             modifyPatient.Age = newPatient.Age;
         }

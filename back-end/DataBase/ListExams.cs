@@ -26,9 +26,6 @@ namespace DTMBackend.DataBase
 
         public void ModifyExam(string date, Exam newExam) {
             Exam modifyExam = _listExam.FirstOrDefault(x => x.Date == date);
-            Console.WriteLine(newExam.OpenMeasurementPx);
-            Console.WriteLine(newExam.ShutMeasurementPx);
-            Console.WriteLine(newExam.ResultMeasurementCm);
             modifyExam.OpenMeasurementPx = newExam.OpenMeasurementPx;
             modifyExam.ShutMeasurementPx = newExam.ShutMeasurementPx;
             modifyExam.ResultMeasurementCm = newExam.ResultMeasurementCm;

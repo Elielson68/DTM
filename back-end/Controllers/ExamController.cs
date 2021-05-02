@@ -48,11 +48,11 @@ namespace DTMBackend.Controllers
         [Route("api/[controller]")]
         public IActionResult Post(Exam newExam)
         {
-            _listExam.AddExam(newExam);
             if (newExam == null)
             {
                 return NotFound("Empty exam");
             }
+            _listExam.AddExam(newExam);
             return Ok(_listExam.GetListExam());
         }
 
@@ -60,7 +60,6 @@ namespace DTMBackend.Controllers
         [Route("api/[controller]/{date}")]
         public IActionResult Patch(string date, Exam newExam)
         {
-            Console.WriteLine(newExam);
             if (newExam == null)
             {
                 return NotFound("Not found");
@@ -73,13 +72,12 @@ namespace DTMBackend.Controllers
         [Route("api/[controller]/{date}")]
         public IActionResult Delete(string date)
         {
-            _listExam.DeleteExam(date);
             if (_listExam.GetListExam().Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
+            _listExam.DeleteExam(date);
             return Ok(_listExam.GetListExam());
         }
-
     }
 }
