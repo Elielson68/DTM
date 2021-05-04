@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   background-color: white;
-  height: 380px;
+  height: 400px;
   width: 400px;
   border-radius: 15px;
   margin: 0 auto;
@@ -36,6 +36,7 @@ export const CardText = styled.div`
 `;
 
 export const InputArea = styled.div`
+padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,10 +45,10 @@ export const InputArea = styled.div`
 `;
 
 export const ButtonArea = styled.div`
-  text-align: center;
   display: flex;
   justify-content: space-between;
-  margin: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
 `;
 
 export const Text = styled.div`

@@ -44,17 +44,17 @@ const RegisterModal: React.FC = () => {
                 </CardText>
                 <InputArea>
                 {/* Area dos inputs */}
-                    <TextField label="Nome"/>
+                    <TextField id="outlined-basic" variant="outlined" label="Nome"/>
                     <br/>
-                    <TextField label="E-mail" type='email'/>
+                    <TextField id="outlined-basic" variant="outlined" label="E-mail" type='email'/>
                     <br/>
-                    <TextField label="Matricula" type='number'/>
+                    <TextField id="outlined-basic" variant="outlined" label="Matricula" type='number'/>
                     <br/>
                 </InputArea>
                 <ButtonArea>
                   {/* Area dos botões */}
-                    <Button variant="contained" color="primary">Enviar</Button>
-                    <Button variant="contained" color="secondary" onClick={handleClose}>Cancelar</Button>
+                    <Button variant="contained" color="secondary" size="large" onClick={handleClose}>Cancelar</Button>
+                    <Button variant="contained" color="primary" size="large">Confirmar</Button>
                 </ButtonArea>
             </Card>
           </Container>
