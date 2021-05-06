@@ -11,7 +11,7 @@ using DTMBackend.DataBase;
 namespace DTMBackend.Controllers
 {
     [ApiController]
-    
+    [Route("api/[controller]")]
     public class PatientController: ControllerBase
     {
         private IListPatients _listPatient;
@@ -22,7 +22,6 @@ namespace DTMBackend.Controllers
         }
     
         [HttpGet]
-        [Route("api/[controller]")]
         public IActionResult Get()
         {
             if(_listPatient.GetListPatient().Count == 0)
@@ -32,11 +31,10 @@ namespace DTMBackend.Controllers
             return Ok(_listPatient.GetListPatient());
         }
 
-        [HttpGet]
-        [Route("api/[controller]/{name}")]
-        public IActionResult Get(string name)
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
         {
-            Patient pacientFind = _listPatient.GetPatient(name);
+            Patient pacientFind = _listPatient.GetPatient(id);
             if (pacientFind == null)
             {
                 return NotFound("Not found");
@@ -45,7 +43,6 @@ namespace DTMBackend.Controllers
         }
 
         [HttpPost]
-        [Route("api/[controller]")]
         public IActionResult Post(Patient newPatient)
         {
             if (newPatient == null)
@@ -56,27 +53,25 @@ namespace DTMBackend.Controllers
             return Ok(_listPatient.GetListPatient());
         }
 
-        [HttpPatch]
-        [Route("api/[controller]/{name}")]
-        public IActionResult Patch(string name, Patient newPatient)
+        [HttpPatch("{id}")]
+        public IActionResult Patch(int id, Patient newPatient)
         {
             if (newPatient == null)
             {
                 return NotFound("Not found");
             }
-            _listPatient.ModifyPatient(name, newPatient);
+            _listPatient.ModifyPatient(id, newPatient);
             return Ok(newPatient);
         }
 
-        [HttpDelete]
-        [Route("api/[controller]/{name}")]
-        public IActionResult Delete(string name)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
             if (_listPatient.GetListPatient().Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
-            _listPatient.DeletePatient(name);
+            _listPatient.DeletePatient(id);
             return Ok(_listPatient.GetListPatient());
         }
     }

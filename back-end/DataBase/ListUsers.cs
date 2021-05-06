@@ -10,8 +10,10 @@ namespace DTMBackend.DataBase
     public class ListUsers : IListUsers 
     {
         List<User> _listUser = new List<User>();
-
+        private int id = 0;
         public void AddUser(User newUser) {
+            id++;
+            newUser.id = id;
             _listUser.Add(newUser);
         }
 
@@ -19,19 +21,19 @@ namespace DTMBackend.DataBase
             return _listUser;
         }
 
-        public User GetUser(string name) {
-            User userFind = _listUser.Find(x => x.Name == name);
+        public User GetUser(int id) {
+            User userFind = _listUser.Find(x => x.id == id);
             return userFind;
         }
 
-        public void ModifyUser(string name, User newUser) {
-            User modifyUser = _listUser.FirstOrDefault(x => x.Name == name);
-            modifyUser.Name = newUser.Name;
+        public void ModifyUser(int id, User newUser) {
+            User modifyUser = _listUser.FirstOrDefault(x => x.id == id);
+            modifyUser.id = newUser.id;
             modifyUser.RegisteredNumber = newUser.RegisteredNumber;
         }
 
-        public void DeleteUser(string name) {
-            User removeUser = _listUser.Find(x => x.Name == name);
+        public void DeleteUser(int id) {
+            User removeUser = _listUser.Find(x => x.id == id);
             _listUser.Remove(removeUser);
         }
     }

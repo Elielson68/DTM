@@ -13,10 +13,10 @@ namespace DTMBackend.DataBase
 
         List<User> GetListUser();
 
-        User GetUser(string name);
+        User GetUser(int id);
 
-        void ModifyUser(string name, User newUser);
+        void ModifyUser(int id, User newUser);
 
-        void DeleteUser(string name);
+        void DeleteUser(int id);
     }
 }

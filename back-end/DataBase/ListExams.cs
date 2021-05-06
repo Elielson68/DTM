@@ -10,8 +10,10 @@ namespace DTMBackend.DataBase
     public class ListExams: IListExams
     {
         List<Exam> _listExam = new List<Exam>();
-
+        private int id = 0;
         public void AddExam(Exam newExam) {
+            id++;
+            newExam.id = id;
             _listExam.Add(newExam);
         }
 
@@ -19,20 +21,20 @@ namespace DTMBackend.DataBase
             return _listExam;
         }
 
-        public Exam GetExam(string date) {
-            Exam examFind = _listExam.Find(x => x.Date == date);
+        public Exam GetExam(int id) {
+            Exam examFind = _listExam.Find(x => x.id == id);
             return examFind;
         }
 
-        public void ModifyExam(string date, Exam newExam) {
-            Exam modifyExam = _listExam.FirstOrDefault(x => x.Date == date);
+        public void ModifyExam(int id, Exam newExam) {
+            Exam modifyExam = _listExam.FirstOrDefault(x => x.id == id);
             modifyExam.OpenMeasurementPx = newExam.OpenMeasurementPx;
             modifyExam.ShutMeasurementPx = newExam.ShutMeasurementPx;
             modifyExam.ResultMeasurementCm = newExam.ResultMeasurementCm;
         }
 
-        public void DeleteExam(string date) {
-            Exam removeExam = _listExam.Find(x => x.Date == date);
+        public void DeleteExam(int id) {
+            Exam removeExam = _listExam.Find(x => x.id == id);
             _listExam.Remove(removeExam);
         }
     }

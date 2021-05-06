@@ -8,6 +8,7 @@ namespace DTMBackend.Models
 {
     public class Exam
     {
+        public int id {get; set;}
         public string Date { get; set; }
         public double OpenMeasurementPx { get; set; }
         public double ShutMeasurementPx  { get; set; }
