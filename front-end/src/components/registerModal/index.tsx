@@ -1,27 +1,48 @@
 import React, { useState } from 'react';
 // Importação do material ui
 import { Button, TextField, Modal } from '@material-ui/core';
+import Snackbar, { SnackbarOrigin } from '@material-ui/core/Snackbar';
 // Importação das div's que foram criadas no style
-import { 
+import {
   Container, 
   Text, 
   Card, 
   CardText, 
   InputArea, 
   ButtonArea, 
-  Body 
+  Body
 } from "./style";
 
+// Snackbar
+export interface State extends SnackbarOrigin {
+  open: boolean;
+}
+
+// Inicio do componente modal
 const RegisterModal: React.FC = () => {
 
-  const [open, setOpen] = useState<boolean>(false);
-  // Abertura e fechamento do modal
-  const handleOpen = () => {
-    setOpen(true);
-  }
-  const handleClose = () => {
-      setOpen(false);
-  }
+// Alerta de finalizando
+const [state, setState] = React.useState<State>({
+  open: false,
+  vertical: 'top',
+  horizontal: 'center',
+});
+const { vertical, horizontal, open } = state;
+const handleClick = (newState: SnackbarOrigin) => () => {
+  setState({ open: true, ...newState });
+};
+const handleCloseAlert = () => {
+  setState({ ...state, open: false });
+};
+
+// Abertura e fechamento do modal
+const [ abrir, setAbrir ] = useState<boolean>(false);
+const handleOpen = () => {
+  setAbrir(true);
+}
+const handleClose = () => {
+    setAbrir(false);
+}
 
   return(
     <Body>
@@ -32,7 +53,7 @@ const RegisterModal: React.FC = () => {
       <Modal
         aria-labelledby="modal-title"
         arial-describedby="modal-description"
-        open={open}
+        open={abrir}
         onClose={handleClose}
       >
 
@@ -43,10 +64,10 @@ const RegisterModal: React.FC = () => {
                     <Text>FAÇA O SEU CADASTRO</Text>
                 </CardText>
                 <InputArea>
-                {/* Area dos inputs */}
                     <TextField id="outlined-basic" variant="outlined" label="Nome"/>
                     <br/>
-                    <TextField id="outlined-basic" variant="outlined" label="E-mail" type='email'/>
+                    <TextField id="outlined-basic" variant="outlined" label="E-mail"
+                    type='email'/>
                     <br/>
                     <TextField id="outlined-basic" variant="outlined" label="Matricula" type='number'/>
                     <br/>
@@ -54,7 +75,15 @@ const RegisterModal: React.FC = () => {
                 <ButtonArea>
                   {/* Area dos botões */}
                     <Button variant="contained" color="secondary" size="large" onClick={handleClose}>Cancelar</Button>
-                    <Button variant="contained" color="primary" size="large">Confirmar</Button>
+                    <Button variant="contained" color="primary" size="large" onClick={handleClick({ vertical: 'bottom', horizontal: 'center' })}>Confirmar</Button>
+                    {/* Finalizando conta - Alerta */}
+                    <Snackbar
+                      anchorOrigin={{ vertical, horizontal }}
+                      open={open}
+                      onClose={handleCloseAlert}
+                      message="Conta criada com sucesso!"
+                      key={vertical + horizontal}
+                    />
                 </ButtonArea>
             </Card>
           </Container>
