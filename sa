@@ -1,0 +1,96 @@
+[33mcommit 26d17090b5262e8f6bcfdcda16785628319c41c8[m[33m ([m[1;36mHEAD -> [m[1;32mElielson[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 04b21c6 030169b
+Author: Lucas da SIlva Freitas <lucasdasilvafreitas090@gmail.com>
+Date:   Mon May 17 18:04:01 2021 -0300
+
+    Merge pull request #1 from olucasfreitas/José-Junior
+    
+    Modal de Cadastro
+
+[33mcommit 030169ba597af5d103317e668279eb13922c0276[m
+Author: beijallote@gmail.com <beijallote@gmail.com>
+Date:   Wed May 12 20:22:34 2021 -0300
+
+    feat: final record alert
+
+[33mcommit 04b21c69c6a9b1a3a1f94d00e8c2f5bc0ab1a521[m
+Author: Elielson68 <elielsonbr.com@gmail.com>
+Date:   Thu May 6 19:59:12 2021 -0300
+
+    feat: route methods
+    refactor: using id
+
+[33mcommit 23a760b9bd09f48bbb79bd4e72a31c3092e52309[m
+Author: José Nonato <66874248+TheKingPele@users.noreply.github.com>
+Date:   Tue May 4 15:31:59 2021 -0300
+
+    Fix: Button size and spacing
+
+[33mcommit 774488fc5abb3da20e5592f45e22e3cd01f30160[m
+Author: José Nonato <66874248+TheKingPele@users.noreply.github.com>
+Date:   Tue May 4 10:55:41 2021 -0300
+
+    feat: register modal component and its styling, and import in the SignIn view
+
+[33mcommit 9e12f603862f87bd3e38979cfc9af09cdf721250[m
+Author: FreitasGa <freitasga.01@gmail.com>
+Date:   Sun May 2 16:47:36 2021 -0300
+
+    fix: put the validations before the actions and removed console logging
+
+[33mcommit 0b1f7eb121ae30c8a5e66ed2447d6b0d08e7aaf3[m
+Author: FreitasGa <freitasga.01@gmail.com>
+Date:   Sat May 1 14:13:34 2021 -0300
+
+    fix: return on controllers User and Exam and remove duplicated Phone on model Patient
+
+[33mcommit d6c3b00525807a04845c00037832a1e0f33ba73f[m
+Author: FreitasGa <freitasga.01@gmail.com>
+Date:   Sat May 1 13:23:42 2021 -0300
+
+    fix: parameters on Exam controller, class name on models Exam and User
+
+[33mcommit 4d4d8bf98bb352c90a25d158e856a9e2a42741a1[m
+Author: FreitasGa <freitasga.01@gmail.com>
+Date:   Sat May 1 13:18:01 2021 -0300
+
+    feat: create list and interface list of Exam and User
+
+[33mcommit d736037b53383f3dce8efa38775f24ea091c80aa[m
+Author: Elielson68 <elielsonbr.com@gmail.com>
+Date:   Fri Apr 30 22:13:21 2021 -0300
+
+    feat: models Exam, Patient and Users
+
+[33mcommit aa8fcb151a063ec054078e83320293ac5f22c651[m
+Author: FreitasGa <freitasga.01@gmail.com>
+Date:   Thu Apr 29 16:35:11 2021 -0300
+
+    feat: creation of user and exam controllers
+
+[33mcommit 0429f5ae195d2080e679919fc39f2d63c1f40053[m
+Author: Elielson68 <elielsonbr.com@gmail.com>
+Date:   Tue Apr 27 20:37:41 2021 -0300
+
+    feat: create a interface list patient
+    feat: create a class list patient
+    feat: create a singleton of list patients
+    update: HttpPut to HttpPatch
+
+[33mcommit bcf982f40d798e2f3c9abcbb182741a038cdd6d1[m
+Author: Elielson68 <elielsonbr.com@gmail.com>
+Date:   Tue Apr 27 18:49:33 2021 -0300
+
+    Backend ASP NET
+
+[33mcommit ed5bddbaa64dd24d6bfff90c1cb3ef8010800f29[m
+Author: Lucas Freitas <lucasdasilvafreitas090@gmail.com>
+Date:   Thu Apr 22 11:11:36 2021 -0300
+
+    inital front-end config
+
+[33mcommit 57446667ac565d1b6ca3b651716c843bfd560ffa[m
+Author: Lucas da SIlva Freitas <lucasdasilvafreitas090@gmail.com>
+Date:   Thu Apr 22 11:10:55 2021 -0300
+
+    Initial commit
