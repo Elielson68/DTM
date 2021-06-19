@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
-using DTMBackend.DataBase;
 
 namespace DTMBackend.Controllers
 {
@@ -14,27 +13,28 @@ namespace DTMBackend.Controllers
     [Route("api/[controller]")]
     public class ExamController : ControllerBase
     {
-        private IListExams _listExam;
+        private AppDtmContext _examContext;
 
-        public ExamController(IListExams listExams)
+        public ExamController(AppDtmContext context)
         {
-            _listExam = listExams;
+            _examContext = context;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            if (_listExam.GetListExam().Count == 0)
+            List<Exam> list = _examContext.Exam.ToList();
+            if (list.Count == 0)
             {
                 return NotFound("Empty list");
             }
-            return Ok(_listExam.GetListExam());
+            return Ok(list);
         }
 
         [HttpGet("{date}")]
         public IActionResult Get(int date)
         {
-            Exam examFind = _listExam.GetExam(date);
+            Exam examFind = _examContext.Exam.Find(date);
             if (examFind == null)
             {
                 return NotFound("Not found");
@@ -49,30 +49,36 @@ namespace DTMBackend.Controllers
             {
                 return NotFound("Empty exam");
             }
-            _listExam.AddExam(newExam);
-            return Ok(_listExam.GetListExam());
+            _examContext.Exam.Add(newExam);
+            _examContext.SaveChanges();
+            return Ok(_examContext.Exam.ToList());
         }
 
-        [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Exam newExam)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Exam newExam)
         {
             if (newExam == null)
             {
                 return NotFound("Not found");
             }
-            _listExam.ModifyExam(id, newExam);
+            newExam.id = id;
+            _examContext.Exam.Update(newExam);
+            _examContext.SaveChanges();
             return Ok(newExam);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (_listExam.GetListExam().Count == 0)
+            List<Exam> list = _examContext.Exam.ToList();
+            if (list.Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
-            _listExam.DeleteExam(id);
-            return Ok(_listExam.GetListExam());
+            _examContext.Exam.Remove(_examContext.Exam.Find(id));
+            _examContext.SaveChanges();
+            list = _examContext.Exam.ToList();
+            return Ok(list);
         }
     }
 }

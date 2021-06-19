@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
-using DTMBackend.DataBase;
 
 namespace DTMBackend.Controllers
 {
@@ -14,27 +13,28 @@ namespace DTMBackend.Controllers
     [Route("api/[controller]")]
     public class UserController: ControllerBase
     {
-        private IListUsers _listUser;
+        private AppDtmContext _userContext;
 
-        public UserController(IListUsers listUsers) 
+        public UserController(AppDtmContext context)
         {
-            _listUser = listUsers;
+            _userContext = context;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            if (_listUser.GetListUser().Count == 0)
+            List<Users> list = _userContext.Users.ToList();
+            if (list.Count == 0)
             {
                 return NotFound("Empty list");
             }
-            return Ok(_listUser.GetListUser());
+            return Ok(list);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            User userFind = _listUser.GetUser(id);
+            Users userFind = _userContext.Users.Find(id);
             if (userFind == null)
             {
                 return NotFound("Not found");
@@ -43,36 +43,40 @@ namespace DTMBackend.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(User newUser)
+        public IActionResult Post(Users newUser)
         {
             if (newUser == null)
             {
                 return NotFound("Empty user");
             }
-            _listUser.AddUser(newUser);
-            return Ok(_listUser.GetListUser());
+            _userContext.Users.Add(newUser);
+            _userContext.SaveChanges();
+            return Ok(_userContext.Users.ToList());
         }
 
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, User newUser)
+        public IActionResult Patch(int id, Users newUser)
         {
             if (newUser == null)
             {
                 return NotFound("Not found");
             }
-            _listUser.ModifyUser(id, newUser);
+            newUser.id = id;
+            _userContext.Users.Update(newUser);
+            _userContext.SaveChanges();
             return Ok(newUser);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (_listUser.GetListUser().Count == 0)
+            List<Users> list = _userContext.Users.ToList();
+            if (list.Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
-            _listUser.DeleteUser(id);
-            return Ok(_listUser.GetListUser());
+            _userContext.Users.Remove(_userContext.Users.Find(id));
+            return Ok(_userContext.Users.ToList());
         }
     }
 }

@@ -1,40 +1,41 @@
 ﻿using DTMBackend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
-using DTMBackend.DataBase;
-
 namespace DTMBackend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class PatientController: ControllerBase
     {
-        private IListPatients _listPatient;
+        private Models.AppDtmContext _patientContext;
 
-        public PatientController(IListPatients listPatients)
+        public PatientController(Models.AppDtmContext context)
         {
-            _listPatient = listPatients;
+            _patientContext = context;
         }
     
         [HttpGet]
         public IActionResult Get()
         {
-            if(_listPatient.GetListPatient().Count == 0)
+            List<Patient> list = _patientContext.Patient.ToList();
+            int count = list.Count;
+            if (count == 0)
             {
-                return NotFound("Empty list");
+               return NotFound("Empty list");
             }
-            return Ok(_listPatient.GetListPatient());
+            return Ok(list);     
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Patient pacientFind = _listPatient.GetPatient(id);
+            Patient pacientFind = _patientContext.Patient.Find(id);
             if (pacientFind == null)
             {
                 return NotFound("Not found");
@@ -49,30 +50,33 @@ namespace DTMBackend.Controllers
             {
                 return NotFound("Empty patient");
             }
-            _listPatient.AddPatient(newPatient);
-            return Ok(_listPatient.GetListPatient());
+            _patientContext.Patient.Add(newPatient);
+            _patientContext.SaveChanges();
+            return Ok(_patientContext.Patient.ToList());
         }
-
-        [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Patient newPatient)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Patient newPatient)
         {
             if (newPatient == null)
             {
                 return NotFound("Not found");
             }
-            _listPatient.ModifyPatient(id, newPatient);
+            newPatient.id = id;
+            _patientContext.Patient.Update(newPatient);
+            _patientContext.SaveChanges();
             return Ok(newPatient);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (_listPatient.GetListPatient().Count == 0)
+            if (_patientContext.Patient.ToList().Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
-            _listPatient.DeletePatient(id);
-            return Ok(_listPatient.GetListPatient());
+            _patientContext.Remove(_patientContext.Patient.Find(id));
+            _patientContext.SaveChanges();
+            return Ok(_patientContext.Patient.ToList());
         }
     }
 }
