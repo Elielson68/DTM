@@ -31,10 +31,10 @@ namespace DTMBackend.Controllers
             return Ok(list);
         }
 
-        [HttpGet("{date}")]
-        public IActionResult Get(int date)
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
         {
-            Exam examFind = _examContext.Exam.Find(date);
+            Exam examFind = _examContext.Exam.Find(id);
             if (examFind == null)
             {
                 return NotFound("Not found");
@@ -42,15 +42,28 @@ namespace DTMBackend.Controllers
             return Ok(examFind);
         }
 
-        [HttpPost]
-        public IActionResult Post(Exam newExam)
+        [HttpPost("{UsersId}/{PatientId}")]
+        public async Task<IActionResult> Post(int UsersId, int PatientId, Exam exam)
         {
-            if (newExam == null)
+            if (exam == null)
             {
                 return NotFound("Empty exam");
             }
-            _examContext.Exam.Add(newExam);
-            _examContext.SaveChanges();
+            Users users = await _examContext.Users.FindAsync(UsersId);
+            Patient patient = await _examContext.Patient.FindAsync(PatientId);
+            
+            Exam newExam = new Exam {
+                Date = exam.Date,
+                OpenMeasurementPx = exam.OpenMeasurementPx,
+                ShutMeasurementPx = exam.ShutMeasurementPx,
+                ResultMeasurementCm = exam.ResultMeasurementCm,
+                ReportOpen = null,
+                ReportShut = null,
+                Users = users,
+                Patient = patient
+            };
+            await _examContext.Exam.AddAsync(newExam);
+            await _examContext.SaveChangesAsync();
             return Ok(_examContext.Exam.ToList());
         }
 

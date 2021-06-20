@@ -32,15 +32,28 @@ namespace DTMBackend.Controllers
             return Ok(list);     
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("{PatientId}")]
+        public IActionResult Get(int PatientId)
         {
-            Patient pacientFind = _patientContext.Patient.Find(id);
+            Patient pacientFind = _patientContext.Patient.Find(PatientId);
             if (pacientFind == null)
             {
                 return NotFound("Not found");
             }
             return Ok(pacientFind);
+        }
+
+        [HttpGet("{PatientId}/exam")]
+        public IActionResult GetExam(int PatientId)
+        {
+            
+            Patient pacientExams = _patientContext.Patient.Find(PatientId);
+            if (pacientExams == null)
+            {
+                return NotFound("Id not found");
+            }
+            pacientExams = _patientContext.Patient.Where(p => p.PatientId == PatientId).Include(e => e.Exams).First();
+            return Ok(pacientExams);
         }
 
         [HttpPost]
@@ -54,27 +67,27 @@ namespace DTMBackend.Controllers
             _patientContext.SaveChanges();
             return Ok(_patientContext.Patient.ToList());
         }
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, Patient newPatient)
+        [HttpPut("{PatientId}")]
+        public IActionResult Put(int PatientId, Patient newPatient)
         {
             if (newPatient == null)
             {
                 return NotFound("Not found");
             }
-            newPatient.id = id;
+            newPatient.PatientId = PatientId;
             _patientContext.Patient.Update(newPatient);
             _patientContext.SaveChanges();
             return Ok(newPatient);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{PatientId}")]
+        public IActionResult Delete(int PatientId)
         {
             if (_patientContext.Patient.ToList().Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
-            _patientContext.Remove(_patientContext.Patient.Find(id));
+            _patientContext.Remove(_patientContext.Patient.Find(PatientId));
             _patientContext.SaveChanges();
             return Ok(_patientContext.Patient.ToList());
         }

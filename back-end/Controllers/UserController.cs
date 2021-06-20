@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
-
+using Microsoft.EntityFrameworkCore;
 namespace DTMBackend.Controllers
 {
     [ApiController]
@@ -31,17 +31,27 @@ namespace DTMBackend.Controllers
             return Ok(list);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("{UsersId}")]
+        public IActionResult Get(int UsersId)
         {
-            Users userFind = _userContext.Users.Find(id);
+            Users userFind = _userContext.Users.Find(UsersId);
             if (userFind == null)
             {
                 return NotFound("Not found");
             }
             return Ok(userFind);
         }
-
+        [HttpGet("{UsersId}/exam")]
+        public IActionResult GetExam(int UsersId)
+        {
+            Users userExams = _userContext.Users.Find(UsersId);
+            if (userExams == null)
+            {
+                return NotFound("Id not found");
+            }
+            userExams = _userContext.Users.Include(a => a.Exams).Where(p => p.UsersId == UsersId).First();
+            return Ok(userExams);
+        }
         [HttpPost]
         public IActionResult Post(Users newUser)
         {
@@ -54,28 +64,28 @@ namespace DTMBackend.Controllers
             return Ok(_userContext.Users.ToList());
         }
 
-        [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Users newUser)
+        [HttpPatch("{UsersId}")]
+        public IActionResult Patch(int UsersId, Users newUser)
         {
             if (newUser == null)
             {
                 return NotFound("Not found");
             }
-            newUser.id = id;
+            newUser.UsersId = UsersId;
             _userContext.Users.Update(newUser);
             _userContext.SaveChanges();
             return Ok(newUser);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{UsersId}")]
+        public IActionResult Delete(int UsersId)
         {
             List<Users> list = _userContext.Users.ToList();
             if (list.Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
-            _userContext.Users.Remove(_userContext.Users.Find(id));
+            _userContext.Users.Remove(_userContext.Users.Find(UsersId));
             return Ok(_userContext.Users.ToList());
         }
     }
