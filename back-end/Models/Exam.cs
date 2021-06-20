@@ -13,14 +13,30 @@ namespace DTMBackend.Models
     {
         [Key]
         public int id {get; set;}
-        [Required]
-        [MaxLength(100, ErrorMessage = "Número de caracteres excedeu o limite permitido. Máximo de caracteres: 300")]
+        
+        [Required(ErrorMessage = "Campo Date não pode estar vazio.")]
+        [MaxLength(100, ErrorMessage = "Número de caracteres no campo Date excedeu o limite permitido. Máximo de caracteres: 300")]
         public string Date { get; set; }
-        [Required]
+        
+        [Required(ErrorMessage = "Campo OpenMeasurementPx não pode estar vazio.")]
         public double OpenMeasurementPx { get; set; }
-        [Required]
+        
+        [Required(ErrorMessage = "Campo ShutMeasurementPx não pode estar vazio.")]
         public double ShutMeasurementPx  { get; set; }
-        [Required]
+        
+        [Required(ErrorMessage = "Campo ResultMeasurementCm não pode estar vazio.")]
         public double ResultMeasurementCm { get; set; }
+
+        public Byte[] ReportOpen { get; set; }
+        public Byte[] ReportShut { get; set; }
+
+        public int PatientId { get; set; }
+        public Patient Patient { get; set; }
+
+        public int UsersId { get; set; }
+        public Users Users { get; set; }
+
+
+
     }
 }

@@ -12,23 +12,38 @@ namespace DTMBackend.Models
     public class Patient
     {
         [Key]
-        public int id {get; set;}
-        [Required]
-        [MaxLength(100, ErrorMessage = "Número de caracteres excedeu o limite permitido. Máximo de caracteres: 300")]
+        public int PatientId { get; set;}
+        [Required(ErrorMessage = "Campo Name não pode estar vazio.")]
+        [MaxLength(100, ErrorMessage = "Número de caracteres no campo Name excedeu o limite permitido. Máximo de caracteres: 100")]
         public string Name { get; set; }
-        [Required]
-        [MaxLength(100, ErrorMessage = "Número de caracteres excedeu o limite permitido. Máximo de caracteres: 300")]
+
+        [Required(ErrorMessage = "Campo DocNumber não pode estar vazio.")]
+        [MaxLength(100, ErrorMessage = "Número de caracteres no campo DocNumber excedeu o limite permitido. Máximo de caracteres: 100")]
+        public string DocNumber { get; set; }
+
+        [Required(ErrorMessage = "Campo Email não pode estar vazio.")]
+        [MaxLength(100, ErrorMessage = "Número de caracteres no campo Email excedeu o limite permitido. Máximo de caracteres: 100")]
         public string Email { get; set; }
-        [Required]
-        [MaxLength(100, ErrorMessage = "Número de caracteres excedeu o limite permitido. Máximo de caracteres: 300")]
+        
+        [Required(ErrorMessage = "Campo Age não pode estar vazio.")]
+        [MaxLength(100, ErrorMessage = "Número de caracteres no campo Age excedeu o limite permitido. Máximo de caracteres: 100")]
         public string Age { get; set; }
-        [Required]
-        [MaxLength(100, ErrorMessage = "Número de caracteres excedeu o limite permitido. Máximo de caracteres: 300")]
+        
+        [Required(ErrorMessage = "Campo Phone não pode estar vazio.")]
+        [MaxLength(100, ErrorMessage = "Número de caracteres no campo Phone excedeu o limite permitido. Máximo de caracteres: 100")]
         public string Phone { get; set; }
-        [Required]
-        [MaxLength(100, ErrorMessage = "Número de caracteres excedeu o limite permitido. Máximo de caracteres: 300")]
+
+        [Required(ErrorMessage = "Campo Gender não pode estar vazio.")]
+        [MaxLength(100, ErrorMessage = "Número de caracteres no campo Gender excedeu o limite permitido. Máximo de caracteres: 100")]
+        public string Gender { get; set; }
+
+        [Required(ErrorMessage = "Campo PainChoice não pode estar vazio.")]
+        [MaxLength(100, ErrorMessage = "Número de caracteres no campo PainChoice excedeu o limite permitido. Máximo de caracteres: 100")]
         public string PainChoice { get; set; }
-        [Required]
+        
+        [Required(ErrorMessage = "Campo InitialDistance não pode estar vazio.")]
         public double InitialDistance {get; set;}
+
+        public List<Exam> Exams { get; set; }
     }
 }
