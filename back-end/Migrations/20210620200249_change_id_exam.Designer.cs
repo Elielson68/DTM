@@ -3,15 +3,17 @@ using System;
 using DTMBackend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DTMBackend.Migrations
 {
     [DbContext(typeof(AppDtmContext))]
-    partial class AppDtmContextModelSnapshot : ModelSnapshot
+    [Migration("20210620200249_change_id_exam")]
+    partial class change_id_exam
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
