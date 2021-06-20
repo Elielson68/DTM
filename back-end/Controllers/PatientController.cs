@@ -7,15 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
+using DTMBackend.DTO;
+
 namespace DTMBackend.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/patient")]
     public class PatientController: ControllerBase
     {
-        private Models.AppDtmContext _patientContext;
+        private AppDtmContext _patientContext;
 
-        public PatientController(Models.AppDtmContext context)
+        public PatientController(AppDtmContext context)
         {
             _patientContext = context;
         }
@@ -23,7 +25,12 @@ namespace DTMBackend.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            List<Patient> list = _patientContext.Patient.ToList();
+            List<Patient> list = new List<Patient>();
+            foreach(PatientDb p in _patientContext.Patient.ToList())
+            {
+                Patient patientDto = new Patient(p.PatientId, p.Name, p.DocNumber, p.Email, p.Age, p.Phone, p.Gender, p.PainChoice, p.InitialDistance);
+                list.Add(patientDto);
+            }
             int count = list.Count;
             if (count == 0)
             {
@@ -32,28 +39,33 @@ namespace DTMBackend.Controllers
             return Ok(list);     
         }
 
-        [HttpGet("{PatientId}")]
-        public IActionResult Get(int PatientId)
-        {
-            Patient pacientFind = _patientContext.Patient.Find(PatientId);
-            if (pacientFind == null)
+        [HttpGet("{id}")]
+        public IActionResult Get(int id) {
+            Models.PatientDb p = _patientContext.Patient.FirstOrDefault(p => p.PatientId == id);
+            if (p == null)
             {
                 return NotFound("Not found");
             }
-            return Ok(pacientFind);
+            Patient patientDto = new Patient(p.PatientId, p.Name, p.DocNumber, p.Email, p.Age, p.Phone, p.Gender, p.PainChoice, p.InitialDistance);
+            return Ok(patientDto);
         }
 
-        [HttpGet("{PatientId}/exam")]
-        public IActionResult GetExam(int PatientId)
+        [HttpGet("{id}/exam")]
+        public IActionResult GetExam(int id)
         {
-            
-            Patient pacientExams = _patientContext.Patient.Find(PatientId);
-            if (pacientExams == null)
+            Models.PatientDb patient = _patientContext.Patient.FirstOrDefault(p => p.PatientId == id);
+            if (patient == null)
             {
                 return NotFound("Id not found");
             }
-            pacientExams = _patientContext.Patient.Where(p => p.PatientId == PatientId).Include(e => e.Exams).First();
-            return Ok(pacientExams);
+            List<Exam> exams = new List<Exam>();
+            List<Models.ExamDb> patientExams = _patientContext.Patient.Where(p => p.PatientId == id).Include(e => e.Exams).First().Exams.ToList();
+            foreach (Models.ExamDb e in patientExams)
+            {
+                Exam examDto = new Exam(e.ExamId, e.Date, e.OpenMeasurementPx, e.ShutMeasurementPx, e.ResultMeasurementCm, e.PatientId, e.UsersId);
+                exams.Add(examDto);
+            }
+            return Ok(exams);
         }
 
         [HttpPost]
@@ -63,31 +75,33 @@ namespace DTMBackend.Controllers
             {
                 return NotFound("Empty patient");
             }
-            _patientContext.Patient.Add(newPatient);
+            Models.PatientDb patient = new Models.PatientDb(newPatient);
+            _patientContext.Patient.Add(patient);
             _patientContext.SaveChanges();
             return Ok(_patientContext.Patient.ToList());
         }
-        [HttpPut("{PatientId}")]
-        public IActionResult Put(int PatientId, Patient newPatient)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Patient newPatient)
         {
             if (newPatient == null)
             {
                 return NotFound("Not found");
             }
-            newPatient.PatientId = PatientId;
-            _patientContext.Patient.Update(newPatient);
+            Models.PatientDb patient = new Models.PatientDb(newPatient);
+            patient.PatientId = id;
+            _patientContext.Patient.Update(patient);
             _patientContext.SaveChanges();
             return Ok(newPatient);
         }
 
-        [HttpDelete("{PatientId}")]
-        public IActionResult Delete(int PatientId)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
             if (_patientContext.Patient.ToList().Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
-            _patientContext.Remove(_patientContext.Patient.Find(PatientId));
+            _patientContext.Remove(_patientContext.Patient.FirstOrDefault(p => p.PatientId == id));
             _patientContext.SaveChanges();
             return Ok(_patientContext.Patient.ToList());
         }

@@ -11,28 +11,28 @@ namespace DTMBackend.Models
         public AppDtmContext(DbContextOptions<AppDtmContext> options):base(options)
         {
         }
-        public DbSet<Patient> Patient { get; set; }
-        public DbSet<Users> Users { get; set; }
-        public DbSet<Exam> Exam { get; set; }
+        public DbSet<PatientDb> Patient { get; set; }
+        public DbSet<UsersDb> Users { get; set; }
+        public DbSet<ExamDb> Exam { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Patient>()
+            modelBuilder.Entity<PatientDb>()
                 .HasMany(pt => pt.Exams)
                 .WithOne(p => p.Patient)
                 .HasForeignKey(pt => pt.PatientId);
 
-            modelBuilder.Entity<Patient>()
+            modelBuilder.Entity<PatientDb>()
                 .Navigation(b => b.Exams)
                 .UsePropertyAccessMode(PropertyAccessMode.Property);
 
-            modelBuilder.Entity<Users>()
+            modelBuilder.Entity<UsersDb>()
                 .HasMany(pt => pt.Exams)
                 .WithOne(t => t.Users)
                 .HasForeignKey(pt => pt.UsersId);
 
-            modelBuilder.Entity<Users>()
+            modelBuilder.Entity<UsersDb>()
                 .Navigation(b => b.Exams)
                 .UsePropertyAccessMode(PropertyAccessMode.Property);
         }

@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
+using DTMBackend.DTO;
 
 namespace DTMBackend.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/exam")]
     public class ExamController : ControllerBase
     {
         private AppDtmContext _examContext;
@@ -18,50 +19,48 @@ namespace DTMBackend.Controllers
         public ExamController(AppDtmContext context)
         {
             _examContext = context;
+            
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            List<Exam> list = _examContext.Exam.ToList();
+            List<Models.ExamDb> list = _examContext.Exam.ToList();
             if (list.Count == 0)
             {
                 return NotFound("Empty list");
             }
-            return Ok(list);
+            List<Exam> listDTO = new List<Exam>();
+            foreach(ExamDb e in list)
+            {
+                Exam exam = new Exam(e.ExamId, e.Date, e.OpenMeasurementPx, e.ShutMeasurementPx, e.ResultMeasurementCm, e.PatientId, e.UsersId);
+                listDTO.Add(exam);
+            }
+            return Ok(listDTO);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Exam examFind = _examContext.Exam.Find(id);
+            ExamDb examFind = _examContext.Exam.Find(id);
             if (examFind == null)
             {
                 return NotFound("Not found");
             }
-            return Ok(examFind);
+            Exam examDTO = new Exam(examFind.ExamId, examFind.Date, examFind.OpenMeasurementPx, examFind.ShutMeasurementPx, examFind.ResultMeasurementCm, examFind.PatientId, examFind.UsersId);
+            return Ok(examDTO);
         }
 
-        [HttpPost("{UsersId}/{PatientId}")]
-        public async Task<IActionResult> Post(int UsersId, int PatientId, Exam exam)
+        [HttpPost]
+        public async Task<IActionResult> Post(Exam exam)
         {
             if (exam == null)
             {
                 return NotFound("Empty exam");
             }
-            Users users = await _examContext.Users.FindAsync(UsersId);
-            Patient patient = await _examContext.Patient.FindAsync(PatientId);
-            
-            Exam newExam = new Exam {
-                Date = exam.Date,
-                OpenMeasurementPx = exam.OpenMeasurementPx,
-                ShutMeasurementPx = exam.ShutMeasurementPx,
-                ResultMeasurementCm = exam.ResultMeasurementCm,
-                ReportOpen = null,
-                ReportShut = null,
-                Users = users,
-                Patient = patient
-            };
+            UsersDb users = _examContext.Users.FirstOrDefault(u => u.UsersId == exam.UsersId);
+            PatientDb patient = _examContext.Patient.FirstOrDefault(p => p.PatientId == exam.PatientId);
+            ExamDb newExam = new ExamDb(exam, patient, users);
             await _examContext.Exam.AddAsync(newExam);
             await _examContext.SaveChangesAsync();
             return Ok(_examContext.Exam.ToList());
@@ -74,8 +73,11 @@ namespace DTMBackend.Controllers
             {
                 return NotFound("Not found");
             }
-            newExam.id = id;
-            _examContext.Exam.Update(newExam);
+            UsersDb users = _examContext.Users.FirstOrDefault(u => u.UsersId == newExam.UsersId);
+            PatientDb patient = _examContext.Patient.FirstOrDefault(p => p.PatientId == newExam.PatientId);
+            ExamDb exam = new ExamDb(newExam, patient, users);
+            exam.ExamId = id;
+            _examContext.Exam.Update(exam);
             _examContext.SaveChanges();
             return Ok(newExam);
         }
@@ -83,7 +85,7 @@ namespace DTMBackend.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            List<Exam> list = _examContext.Exam.ToList();
+            List<ExamDb> list = _examContext.Exam.ToList();
             if (list.Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
