@@ -1,10 +1,12 @@
 import React from "react";
 
-import { Container, Text } from "./styles";
+import { Container } from "./styles";
+
+import { ExamPage } from "../../components/examPage/index";
 
 const ExamData: React.FC = () => (
   <Container>
-    <Text>ExamData</Text>
+    <ExamPage />
   </Container>
 );
 
