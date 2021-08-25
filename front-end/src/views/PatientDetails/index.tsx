@@ -1,10 +1,11 @@
 import React from "react";
 
-import { Container, Text } from "./styles";
+import { Container } from "./styles";
+import { PatientsDetails } from "../../components/patientsDetails/index"
 
 const PatientDetails: React.FC = () => (
   <Container>
-    <Text>PatientDetails</Text>
+    <PatientsDetails />
   </Container>
 );
 

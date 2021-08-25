@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: black;
-`;
-
-export const Text = styled.h1`
-  color: white
+  /* padding: 0;
+  margin: 0; */
+  background-color: #102E4A;
+  /* width: 99.5vw;
+  height: 98vh; */
 `;
