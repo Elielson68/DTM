@@ -11,7 +11,7 @@ using DTMBackend.DataBase;
 namespace DTMBackend.Controllers
 {
     [ApiController]
-
+    [Route("api/[controller]")]
     public class ExamController : ControllerBase
     {
         private IListExams _listExam;
@@ -22,7 +22,6 @@ namespace DTMBackend.Controllers
         }
 
         [HttpGet]
-        [Route("api/[controller]")]
         public IActionResult Get()
         {
             if (_listExam.GetListExam().Count == 0)
@@ -32,9 +31,8 @@ namespace DTMBackend.Controllers
             return Ok(_listExam.GetListExam());
         }
 
-        [HttpGet]
-        [Route("api/[controller]/{date}")]
-        public IActionResult Get(string date)
+        [HttpGet("{date}")]
+        public IActionResult Get(int date)
         {
             Exam examFind = _listExam.GetExam(date);
             if (examFind == null)
@@ -45,41 +43,36 @@ namespace DTMBackend.Controllers
         }
 
         [HttpPost]
-        [Route("api/[controller]")]
         public IActionResult Post(Exam newExam)
         {
-            _listExam.AddExam(newExam);
             if (newExam == null)
             {
                 return NotFound("Empty exam");
             }
+            _listExam.AddExam(newExam);
             return Ok(_listExam.GetListExam());
         }
 
-        [HttpPatch]
-        [Route("api/[controller]/{date}")]
-        public IActionResult Patch(string date, Exam newExam)
+        [HttpPatch("{id}")]
+        public IActionResult Patch(int id, Exam newExam)
         {
-            Console.WriteLine(newExam);
             if (newExam == null)
             {
                 return NotFound("Not found");
             }
-            _listExam.ModifyExam(date, newExam);
+            _listExam.ModifyExam(id, newExam);
             return Ok(newExam);
         }
 
-        [HttpDelete]
-        [Route("api/[controller]/{date}")]
-        public IActionResult Delete(string date)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
-            _listExam.DeleteExam(date);
             if (_listExam.GetListExam().Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
+            _listExam.DeleteExam(id);
             return Ok(_listExam.GetListExam());
         }
-
     }
 }

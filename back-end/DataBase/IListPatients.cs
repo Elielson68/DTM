@@ -13,10 +13,10 @@ namespace DTMBackend.DataBase
 
         List<Patient> GetListPatient();
 
-        Patient GetPatient(string name);
+        Patient GetPatient(int id);
 
-        void ModifyPatient(string name, Patient newPatient);
+        void ModifyPatient(int id, Patient newPatient);
 
-        void DeletePatient(string name);
+        void DeletePatient(int id);
     }
 }

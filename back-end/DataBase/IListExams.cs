@@ -13,10 +13,10 @@ namespace DTMBackend.DataBase
 
         List<Exam> GetListExam();
 
-        Exam GetExam(string date);
+        Exam GetExam(int id);
 
-        void ModifyExam(string date, Exam newExam);
+        void ModifyExam(int id, Exam newExam);
 
-        void DeleteExam(string date);
+        void DeleteExam(int id);
     }
 }
