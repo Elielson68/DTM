@@ -9,7 +9,7 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-} from "./styles";
+} from "../registerModal/styles";
 
 interface ModalInterface {
   show: boolean;
