@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Container, Text } from "./styles";
+import { Container } from "./styles";
 
 const ExamData: React.FC = () => (
   <Container>
-    <Text>ExamData</Text>
+    Teste
   </Container>
 );
 

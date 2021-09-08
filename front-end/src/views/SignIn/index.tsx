@@ -1,72 +1,70 @@
 import React from "react";
-// import RegisterModal from "../../components/registerModal/index";
-
+import RegisterModal from "../../components/RegisterModal/index";
 import {
-  Body,
+  AboutText,
+  Button,
+  Card,
   Container,
-  TextsDiv,
-  LoginBox,
-  TopHeader,
-  TopEnterAccount,
-  InputsLogin,
-  UsersInput,
-  LoginButton,
-  ButtonDiv,
-  // BottomMessage,
-  ForgotPass,
-  ModalButton,
+  ForgotPasswordText,
+  Form,
+  GetToKnowText,
+  Header,
+  HeaderBar,
+  Input,
+  Label,
+  LogoText,
+  MainContent,
+  RegisterText,
+  Texts,
 } from "./styles";
 
-
-
-const SignIn: React.FC = () => (
-  <Body>
-    <TopHeader>
-      <h1>DTM</h1>
-      <span>evaluation</span>
-    </TopHeader>
+export default function SignIn() {
+  const [show, setShow] = React.useState(false);
+  function handleClose() {
+    setShow(false);
+    return show;
+  }
+  return (
     <Container>
-      <TextsDiv>
-        <h3>Conheça mais sobre o projeto DTM</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          molestie laoreet finibus. Vestibulum sodales consequat magna at
-          placerat. Aenean sagittis erat eu iaculis ultricies. Proin at nibh
-          enim. Nullam ac ornare lacus, at luctus quam. Phasellus scelerisque
-          odio purus, id fermentum tellus interdum a. Donec efficitur metus eget
-          quam tempor facilisis. Nam tincidunt commodo ex nec varius.
-        </p>
-      </TextsDiv>
-      <LoginBox>
-        <TopEnterAccount>
-          <h3>ENTRE COM A SUA CONTA</h3>
-        </TopEnterAccount>
-        <InputsLogin>
-          <UsersInput
-            id="outlined-basic"
-            label="E-mail"
-            placeholder="E-mail"
-            variant="outlined"
-          />
-          <UsersInput
-            id="outlined-basic"
-            label="Senha"
-            placeholder="Senha"
-            variant="outlined"
-            type="password"
-          />
-          <ForgotPass>Esqueci minha senha</ForgotPass>
-        </InputsLogin>
-        <ButtonDiv>
-          <LoginButton variant="contained" color="primary" size="large">
-            ENTRAR
-          </LoginButton>
-          <ModalButton>Não tenho uma conta</ModalButton>
-          {/* <BottomMessage onClick={openModal()} >Não tenho uma conta</BottomMessage> */}
-        </ButtonDiv>
-      </LoginBox>
-    </Container>
-  </Body>
-);
+      <Header>
+        <LogoText>
+          <h1>DTM</h1>
+          <p>Evaluation</p>
+        </LogoText>
+      </Header>
+      <MainContent>
+        <Texts>
+          <GetToKnowText>Conheça mais sobre o projeto DTM</GetToKnowText>
+          <AboutText>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+            molestie laoreet finibus. Vestibulum sodales consequat magna at
+            placerat. Aenean sagittis erat eu iaculis ultricies. Proin at nibh
+            enim. Nullam ac ornare lacus, at luctus quam. Phasellus scelerisque
+            odio purus, id fermentum tellus interdum a. Donec efficitur metus
+            eget quam tempor facilisis. Nam tincidunt commodo ex nec varius.
+          </AboutText>
+        </Texts>
 
-export default SignIn;
+        <Card>
+          <HeaderBar>ENTRE COM A SUA CONTA</HeaderBar>
+          <Form>
+            <Label>E-mail</Label>
+            <Input placeholder="exemplo@email.com" type="email" />
+
+            <Label>Matricula</Label>
+            <Input placeholder="12345678" type="number" />
+            <ForgotPasswordText>Esqueci Minha Senha</ForgotPasswordText>
+            <Button>Entrar</Button>
+            <RegisterText onClick={() => setShow(true)}>
+              Não tenho uma conta
+            </RegisterText>
+            <RegisterModal
+              onClose={() => handleClose()}
+              show={show}
+            />
+          </Form>
+        </Card>
+      </MainContent>
+    </Container>
+  );
+}

@@ -1,12 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
-
+ 
 const GlobalStyle = createGlobalStyle`
-  * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
   }
-`
+`;
+ 
 export default GlobalStyle;

@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Container, Text } from "./styles";
+import { Container } from "./styles";
 
 const Dashboard: React.FC = () => (
-  <Container>
-    <Text>Dashboard</Text>
-  </Container>
+    <Container>
+      Teste
+    </Container>
 );
 
 export default Dashboard;
