@@ -94,11 +94,16 @@ export const LoginButton = styled(Button)`
     border-radius: 15px;
     margin-top: 85px;
     font-size: 1.2rem;
+    margin-bottom: 15px;
 
     :hover {
       background-color: #f29e02;
     }
   }
+`;
+
+export const ModalButton = styled(Button)`
+  background-color: white;
 `;
 
 export const BottomMessage = styled.div`

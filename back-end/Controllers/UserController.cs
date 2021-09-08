@@ -11,7 +11,7 @@ using DTMBackend.DataBase;
 namespace DTMBackend.Controllers
 {
     [ApiController]
-
+    [Route("api/[controller]")]
     public class UserController: ControllerBase
     {
         private IListUsers _listUser;
@@ -22,7 +22,6 @@ namespace DTMBackend.Controllers
         }
 
         [HttpGet]
-        [Route("api/[controller]")]
         public IActionResult Get()
         {
             if (_listUser.GetListUser().Count == 0)
@@ -32,11 +31,10 @@ namespace DTMBackend.Controllers
             return Ok(_listUser.GetListUser());
         }
 
-        [HttpGet]
-        [Route("api/[controller]/{name}")]
-        public IActionResult Get(string name)
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
         {
-            User userFind = _listUser.GetUser(name);
+            User userFind = _listUser.GetUser(id);
             if (userFind == null)
             {
                 return NotFound("Not found");
@@ -45,40 +43,36 @@ namespace DTMBackend.Controllers
         }
 
         [HttpPost]
-        [Route("api/[controller]")]
         public IActionResult Post(User newUser)
         {
-            _listUser.AddUser(newUser);
             if (newUser == null)
             {
                 return NotFound("Empty user");
             }
+            _listUser.AddUser(newUser);
             return Ok(_listUser.GetListUser());
         }
 
-        [HttpPatch]
-        [Route("api/[controller]/{name}")]
-        public IActionResult Patch(string name, User newUser)
+        [HttpPatch("{id}")]
+        public IActionResult Patch(int id, User newUser)
         {
-            Console.WriteLine(newUser);
             if (newUser == null)
             {
                 return NotFound("Not found");
             }
-            _listUser.ModifyUser(name, newUser);
+            _listUser.ModifyUser(id, newUser);
             return Ok(newUser);
         }
 
-        [HttpDelete]
-        [Route("api/[controller]/{name}")]
-        public IActionResult Delete(string name)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
-            _listUser.DeleteUser(name);
             if (_listUser.GetListUser().Count == 0)
             {
                 return NotFound("Lista de pacientes vazia");
             }
-            return DayOfWeek(_listUser.GetListUser());
+            _listUser.DeleteUser(id);
+            return Ok(_listUser.GetListUser());
         }
     }
 }

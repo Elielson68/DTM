@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace DTMBackend.Models
 {
-    public class Patient
+    public class User
     {
         public int id {get; set;}
         public string Name { get; set; }
         public string Email { get; set; }
-        public int Age { get; set; }
-        public string Phone { get; set; }
-        public string PainChoice { get; set; }
-        public double InitialDistanceCm {get; set;}
+        public string RegisteredNumber { get; set; }
+        public string Password { get; set; }
     }
 }

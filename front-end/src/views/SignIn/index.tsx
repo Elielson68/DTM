@@ -1,4 +1,6 @@
 import React from "react";
+// import RegisterModal from "../../components/registerModal/index";
+
 import {
   Body,
   Container,
@@ -10,9 +12,12 @@ import {
   UsersInput,
   LoginButton,
   ButtonDiv,
-  BottomMessage,
+  // BottomMessage,
   ForgotPass,
+  ModalButton,
 } from "./styles";
+
+
 
 const SignIn: React.FC = () => (
   <Body>
@@ -56,7 +61,8 @@ const SignIn: React.FC = () => (
           <LoginButton variant="contained" color="primary" size="large">
             ENTRAR
           </LoginButton>
-          <BottomMessage>Não tenho uma conta</BottomMessage>
+          <ModalButton>Não tenho uma conta</ModalButton>
+          {/* <BottomMessage onClick={openModal()} >Não tenho uma conta</BottomMessage> */}
         </ButtonDiv>
       </LoginBox>
     </Container>

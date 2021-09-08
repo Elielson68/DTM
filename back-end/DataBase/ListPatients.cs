@@ -9,8 +9,12 @@ namespace DTMBackend.DataBase
 {
     public class ListPatients: IListPatients
     {
+        private int id=0;
+
         List<Patient> _listPatient = new List<Patient>();
         public void AddPatient(Patient newPatient){
+            id++;
+            newPatient.id = id;
             _listPatient.Add(newPatient);
         }
 
@@ -18,21 +22,19 @@ namespace DTMBackend.DataBase
             return _listPatient;
         }
 
-        public Patient GetPatient(string name){
-            Patient patientFind = _listPatient.Find(x => x.Name == name);
+        public Patient GetPatient(int id){
+            Patient patientFind = _listPatient.Find(x => x.id == id);
             return patientFind;
         }
 
-        public void ModifyPatient(string name, Patient newPatient){
-            Patient modifyPatient = _listPatient.FirstOrDefault(x => x.Name == name);
-            Console.WriteLine(newPatient.Name);
-            Console.WriteLine(newPatient.Age);
-            modifyPatient.Name = newPatient.Name;
+        public void ModifyPatient(int id, Patient newPatient){
+            Patient modifyPatient = _listPatient.FirstOrDefault(x => x.id == id);
+            modifyPatient.id = newPatient.id;
             modifyPatient.Age = newPatient.Age;
         }
 
-        public void DeletePatient(string name){
-            Patient removePatient = _listPatient.Find(x => x.Name == name);
+        public void DeletePatient(int id){
+            Patient removePatient = _listPatient.Find(x => x.id == id);
             _listPatient.Remove(removePatient);
             
         }
