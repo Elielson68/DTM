@@ -1,15 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 
-import { RegisterPage, RegisterButton, RegisterInputs, RegisterForm, GenderChose, FeelsPain } from "./styles";
+import { Container, RegisterButton, RegisterInputs, RegisterForm, GenderChose, FeelsPain } from "./styles";
 
 const RegisterPatient: React.FC = () => {
   const [currentRadioValue, setCurrentValue] = React.useState("on");
 
 
   return (
-    <>
-      <RegisterPage>
+      <Container>
         <h2>Cadastrar Paciente</h2>
         <RegisterForm>
           <h3>Nome</h3>
@@ -74,8 +73,7 @@ const RegisterPatient: React.FC = () => {
             SALVAR
           </RegisterButton>
         </RegisterForm>
-      </RegisterPage>
-    </>
+      </Container>
   );
 };
 
