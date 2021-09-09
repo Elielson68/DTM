@@ -86,3 +86,73 @@ export const RegisterButton = styled.button`
     font-size: 0.9rem;
     
 `
+
+export const GenderChose = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: row; 
+    align-self: center;
+
+    .masculinoDiv{
+        background-color: #009F93;
+        border-radius: 15px;
+        padding: 8px;
+        margin-right: 20px;
+        width: 100px;
+
+        label {
+            color: #FFFF;
+            font-wights: bold;
+            font-size: 0.8rem;
+        }
+    }
+
+    .femininoDiv{
+        background-color: #009F93;
+        border-radius: 15px;
+        padding: 8px;
+        margin-right: 20px;
+        width: 90px;
+
+        label {
+            color: #FFFF;
+            font-wights: bold;
+            font-size: 0.8rem;
+        }
+    }
+    }
+
+
+`
+export const FeelsPain = styled.div`
+    display: flex;
+    flex-direction: row; 
+
+    .pain{
+        background-color: #009F93;
+        border-radius: 15px;
+        padding: 8px;
+        margin-right: 20px;
+        width: 60px;
+
+        label {
+            color: #FFFF;
+            font-wights: bold;
+            font-size: 0.8rem;
+        }
+    }
+    .noPain{
+        background-color: #009F93;
+        border-radius: 15px;
+        padding: 8px;
+        margin-right: 20px;
+        width: 60px;
+
+        label {
+            color: #FFFF;
+            font-wights: bold;
+            font-size: 0.8rem;
+        }
+    }
+    }
+`

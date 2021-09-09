@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 
-import { RegisterPage, RegisterButton, RegisterInputs, RegisterForm } from "./styles";
+import { RegisterPage, RegisterButton, RegisterInputs, RegisterForm, GenderChose, FeelsPain } from "./styles";
 
 const RegisterPatient: React.FC = () => {
   const [currentRadioValue, setCurrentValue] = React.useState("on");
@@ -16,54 +16,60 @@ const RegisterPatient: React.FC = () => {
           <RegisterInputs type="text" name="Nome" />
           <h3>Data de Nascimento</h3>
           <RegisterInputs type="date" name="Data de Nascimento" />
-          <div>
+          <h3>Gênero</h3>
+          <GenderChose>
+          <div className="masculinoDiv">
             <input
-              name="radio-item-1"
+              name="gender"
               value="on"
               type="radio"
               onChange={(e) => setCurrentValue(e.target.value)}
               defaultChecked={currentRadioValue === "on"}
             />
-            <label htmlFor="radio-item-1">Radio Item 1</label>
-            {currentRadioValue === "on" && <div>one</div>}
+            <label htmlFor="gender">MASCULINO</label>
+            {currentRadioValue === "on"}
           </div>
-          <div>
+          <div className="femininoDiv">
             <input
-              name="radio-item-1"
+              name="gender"
               value="off"
               type="radio"
               onChange={(e) => setCurrentValue(e.target.value)}
               defaultChecked={currentRadioValue === "off"}
             />
-            <label htmlFor="radio-item-1">Radio Item 2</label>
-            {currentRadioValue === "off" && <div>two</div>}
+            <label htmlFor="gender">FEMININO</label>
+            {currentRadioValue === "off"}
           </div>
+          </GenderChose>
           <h3>Email</h3>
           <RegisterInputs type="email" name="Email" />
           <h3>Celular</h3>
           <RegisterInputs type="tel" name="Celular" />
-          <div>
+          <h3>Sente dor?</h3>
+          <FeelsPain>
+          <div className="pain">
             <input
-              name="radio-item-1"
+              name="pain"
               value="on"
               type="radio"
               onChange={(e) => setCurrentValue(e.target.value)}
               defaultChecked={currentRadioValue === "on"}
             />
-            <label htmlFor="radio-item-1">Radio Item 1</label>
-            {currentRadioValue === "on" && <div>one</div>}
+            <label htmlFor="pain">SIM</label>
+            {currentRadioValue === "on"}
           </div>
-          <div>
+          <div className="noPain">
             <input
-              name="radio-item-1"
+              name="pain"
               value="off"
               type="radio"
               onChange={(e) => setCurrentValue(e.target.value)}
               defaultChecked={currentRadioValue === "off"}
             />
-            <label htmlFor="radio-item-1">Radio Item 2</label>
-            {currentRadioValue === "off" && <div>two</div>}
+            <label htmlFor="pain">NÃO</label>
+            {currentRadioValue === "off"}
           </div>
+          </FeelsPain>
           <RegisterButton type="submit" name="Salvar">
             SALVAR
           </RegisterButton>
