@@ -81,7 +81,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 12vh;
   position: sticky;
-  border-bottom: 10px solid #fff;
+  border-bottom: 1vh solid #fff;
   background-color: #ba324f;
 
   span:last-child {
