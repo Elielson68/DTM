@@ -1,11 +1,15 @@
 import React from "react";
+import MenuBar from "../../components/MenuBar";
 
 import { Container, Text } from "./styles";
 
 const EditPatient: React.FC = () => (
-  <Container>
-    <Text>EditPatient</Text>
-  </Container>
+  <>
+    <MenuBar />
+    <Container>
+      <Text>EditPatient</Text>
+    </Container>
+  </>
 );
 
 export default EditPatient;
