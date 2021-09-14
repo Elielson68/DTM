@@ -46,6 +46,7 @@ const PatientDetails: React.FC = () => (
                     <Info>Sente dor?</Info>
                     <Data>Sim</Data>
                     <Line />
+                    <br />
                     <DivButton>
                         <EditButton>Editar</EditButton>
                         <br/>
