@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 
-import { Container, RegisterButton, RegisterInputs, RegisterForm, GenderChose, FeelsPain } from "./styles";
+import { Container, RegisterButton, RegisterInputs, RegisterForm, ChooseGender, FeelsPain, DivisionLine } from "./styles";
 
 const RegisterPatient: React.FC = () => {
   const [currentRadioValue, setCurrentValue] = React.useState("on");
@@ -16,7 +16,7 @@ const RegisterPatient: React.FC = () => {
           <h3>Data de Nascimento</h3>
           <RegisterInputs type="date" name="Data de Nascimento" />
           <h3>Gênero</h3>
-          <GenderChose>
+          <ChooseGender>
           <div className="masculinoDiv">
             <input
               name="gender"
@@ -39,7 +39,8 @@ const RegisterPatient: React.FC = () => {
             <label htmlFor="gender">FEMININO</label>
             {currentRadioValue === "off"}
           </div>
-          </GenderChose>
+          </ChooseGender>
+          <DivisionLine/>
           <h3>Email</h3>
           <RegisterInputs type="email" name="Email" />
           <h3>Celular</h3>
@@ -69,6 +70,7 @@ const RegisterPatient: React.FC = () => {
             {currentRadioValue === "off"}
           </div>
           </FeelsPain>
+          <DivisionLine/>
           <RegisterButton type="submit" name="Salvar">
             SALVAR
           </RegisterButton>

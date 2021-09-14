@@ -1,22 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  background-color: #102e4a;
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-
-  h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    color: white;
-    margin-top: -1%;
-  }
-`;
-
 export const RegisterForm = styled.form`
   width: 35%;
   height: fit-content;
@@ -35,12 +18,19 @@ export const RegisterForm = styled.form`
     font-size: 1rem;
     align-self: flex-start;
   }
+
   @media (max-width: 1000px) {
-    width: 70%;
+    width: 75%;
   }
 `;
+
+export const DivisionLine = styled.hr`
+  border: 1px solid gray;
+  width: 100%;
+`
+
 export const RegisterInputs = styled.input`
-  height: 5%;
+  height: 8%;
   width: 100%;
   border-top-style: hidden;
   border-right-style: hidden;
@@ -48,9 +38,6 @@ export const RegisterInputs = styled.input`
   margin-bottom: 30px;
   outline: none;
   transition: linear 0.5s;
-
-  @media (max-width: 1000px) {
-  }
 
   :hover {
     border-bottom: 1.5px solid orange;
@@ -76,7 +63,7 @@ export const RegisterButton = styled.button`
   font-size: 0.9rem;
 `;
 
-export const GenderChose = styled.div`
+export const ChooseGender = styled.div`
     display: flex;
     align-items: center;
     flex-direction: row; 
@@ -133,8 +120,13 @@ export const GenderChose = styled.div`
 
 `;
 export const FeelsPain = styled.div`
-    display: flex;
-    flex-direction: row; 
+display: flex;
+align-items: center;
+flex-direction: row; 
+align-self: center;
+justify-content: flex-start;
+width: 100%;
+
 
     .pain{
         background-color: #009F93;
@@ -163,4 +155,26 @@ export const FeelsPain = styled.div`
         }
     }
     }
+`
+export const Container = styled.div`
+  background-color: #102e4a;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
+    margin-top: -1%;
+  }
+
+  @media(max-width: 360px) {
+    height: fit-content;
+  }
 `;
+
+
