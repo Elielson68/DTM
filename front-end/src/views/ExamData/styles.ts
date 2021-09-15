@@ -2,34 +2,55 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: calc(100% - 15%);
-`;
+  max-width: 100%;
+  height: calc(100vh - 16vh);
+  padding: 2.5% 10%;
 
-export const MainContent = styled(Container)`
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 100%;
-  padding: 5%;
-  border: 1px solid yellow;
+  @media (max-width: 1440px) {
+    height: calc(100vh - 15vh);
+    padding: 2.5%;
+  }
+
+  @media (max-width: 768px) {
+    height: fit-content;
+    flex-wrap: wrap;
+    padding: 5% 2.5%;
+  }
 `;
 
 export const Exam = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   height: 100%;
-  width: 40%;
-  border: 1px solid white;
+  width: 100%;
   h1 {
+    text-align: center;
     margin: 0;
     margin-bottom: 5%;
     padding: 0;
     color: #fff;
+  }
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+    width: 75%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    h1 {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (max-width: 425px) {
+    width: 100%;
+    height: fit-content;
   }
 `;
 
@@ -38,11 +59,37 @@ export const Data = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 60%;
-  height: 100%;
+  width: 50%;
+  height: 75%;
   background-color: #fff;
   border-radius: 16px;
   padding: 0 5%;
+
+  @media (max-width: 1440px) {
+    width: 70%;
+    height: 70%;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 0 5%;
+    width: 80%;
+    height: 80%;
+  }
+
+  @media (max-height: 540px) {
+    width: 60%;
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+    height: 550px;
+  }
+
+  @media (max-width: 425px) {
+    width: 95%;
+    height: 500px;
+  }
 `;
 
 export const TextInfo = styled.div`
@@ -54,12 +101,12 @@ export const TextInfo = styled.div`
   height: fit-content;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   span {
-    font-size: 0.75rem;
-    margin-bottom: 2%;
+    font-size: 1rem;
+    margin-bottom: 5px;
   }
   h3 {
     margin: 0;
-    margin-bottom: 2%;
+    margin-bottom: 5px;
   }
 `;
 
@@ -85,30 +132,50 @@ export const Pictures = styled.div`
   align-items: center;
   justify-content: space-evenly;
   height: 100%;
-  width: 40%;
+  width: 100%;
   color: #fff;
   overflow-y: visible;
-  border: 1px solid green;
-  h2 {
+  text-align: center;
+  overflow-y: visible;
+  h1 {
     &:first-child {
       margin: 0;
       margin-bottom: 2.5%;
     }
     margin: 2.5% 0;
   }
+  @media (max-width: 1024px) {
+    h1 {
+      font-size: 1.25rem;
+    }
+  }
+  @media (max-width: 768px) {
+    padding-top: 5%;
+  }
 `;
 
-export const OpenMouthPic = styled(Data)`
+export const Picture = styled(Data)`
   flex-direction: row;
   justify-content: center;
-  width: 80%;
-  height: 50%;
-  padding: 2.5%;
+  width: 45%;
+  height: 45%;
+  padding: 2%;
   img {
     border-radius: 16px;
     width: 100%;
     height: 100%;
   }
-`;
 
-export const ClosedMouthPic = styled(OpenMouthPic)``;
+  @media (max-width: 1440px) {
+    width: 60%;
+    height: 40%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 70%;
+  }
+
+  @media (max-height: 540px) {
+    width: 60%;
+  }
+`;
