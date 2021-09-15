@@ -62,7 +62,7 @@ export const Options = styled.div`
     a {
       text-decoration: none;
       color: #fff;
-      font-size: 1.75rem;
+      font-size: 23px;
       text-align: center;
       transition: all 0.2s linear;
       &:hover {
@@ -93,7 +93,7 @@ export const MobileMenu = styled.div`
   height: 30%;
   position: fixed;
   background-color: #ba324f;
-  margin-top: -5px;
+  margin-top: -1vh;
   span {
     display: flex;
     flex-direction: row;
