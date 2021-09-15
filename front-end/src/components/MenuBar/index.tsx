@@ -7,7 +7,7 @@ import MenuIcon from "../../assets/img/menu-icon.png";
 export default function MenuBar() {
   const [show, setShow] = React.useState(false);
   function handleResize() {
-    if (window.innerWidth > 670) {
+    if (window.innerWidth < 1024) {
       setShow(false);
     }
   }
@@ -38,30 +38,29 @@ export default function MenuBar() {
             <a href="/">Sair</a>
           </span>
         </Options>
-        <span onClick={() => setShow(!show)}>
+        <span onClick={() => setShow(!show)} className="menu-icon">
           <img src={MenuIcon} alt="" />
         </span>
       </Container>
-
       {show && (
-        <MobileMenu>
-          <span>
-            <a href="/dashboard">Pacientes</a>
-          </span>
-          <span>
-            <a href="/register-patient">Resgistrar Paciente</a>
-          </span>
-          <span>
-            <a href="/edit-professional">Editar Perfil</a>
-          </span>
-          <span>
-            <a href="/about-us">Sobre Nós</a>
-          </span>
-          <span>
-            <a href="/">Sair</a>
-          </span>
-        </MobileMenu>
-      )}
+          <MobileMenu>
+            <span>
+              <a href="/dashboard">Pacientes</a>
+            </span>
+            <span>
+              <a href="/register-patient">Resgistrar Paciente</a>
+            </span>
+            <span>
+              <a href="/edit-professional">Editar Perfil</a>
+            </span>
+            <span>
+              <a href="/about-us">Sobre Nós</a>
+            </span>
+            <span>
+              <a href="/">Sair</a>
+            </span>
+          </MobileMenu>
+        )}
     </>
   );
 }
