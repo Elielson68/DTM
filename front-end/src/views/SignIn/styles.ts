@@ -46,7 +46,7 @@ export const LogoText = styled.div`
 `;
 
 export const MainContent = styled.main`
-  width: 80%;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: flex-start;
