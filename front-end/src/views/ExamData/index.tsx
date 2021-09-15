@@ -20,7 +20,7 @@ export default function ExamData() {
       <Container>
         <MainContent>
           <Exam>
-            <h2>Dados do Exame</h2>
+            <h1>Dados do Exame</h1>
             <Data>
               <TextInfo>
                 <span>Nome</span>
