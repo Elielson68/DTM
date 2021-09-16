@@ -93,7 +93,7 @@ export const MobileMenu = styled.div`
   height: 30%;
   position: fixed;
   background-color: #ba324f;
-  margin-top: -1vh;
+  margin-top: -2vh;
   span {
     display: flex;
     flex-direction: row;
