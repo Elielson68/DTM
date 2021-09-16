@@ -167,7 +167,7 @@ export const Picture = styled(Data)`
   }
 
   @media (max-width: 1440px) {
-    width: 60%;
+    width: 50%;
     height: 40%;
   }
 
