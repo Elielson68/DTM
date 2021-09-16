@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import AboutUs from "./views/AboutUs";
 import Dashboard from "./views/Dashboard";
 import EditPatient from "./views/EditPatient";
 import EditProfessional from "./views/EditProfessional";
@@ -19,8 +20,9 @@ const Routes: React.FC = () => (
     <Route path="/measurement" exact component={Measurement} />
     <Route path="/exam-data" exact component={ExamData} />
     <Route path="/edit-professional" exact component={EditProfessional} />
-    <Route path="/EditPatient" exact component={EditPatient} />
+    <Route path="/edit-patient" exact component={EditPatient} />
     <Route path="/dashboard" exact component={Dashboard} />
+    <Route path="/about-us" exact component={AboutUs} />
   </BrowserRouter>
 );
 

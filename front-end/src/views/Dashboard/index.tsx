@@ -1,11 +1,13 @@
 import React from "react";
 
 import { Container } from "./styles";
+import MenuBar from "../../components/MenuBar";
 
-const Dashboard: React.FC = () => (
-    <Container>
-      Teste
-    </Container>
-);
-
-export default Dashboard;
+export default function Dashboard() {
+  return (
+    <>
+      <MenuBar />
+      <Container>Dashboard</Container>
+    </>
+  );
+}

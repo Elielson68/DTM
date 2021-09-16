@@ -1,11 +1,15 @@
 import React from "react";
+import MenuBar from "../../components/MenuBar";
 
 import { Container, Text } from "./styles";
 
 const Profile: React.FC = () => (
-  <Container>
-    <Text>Profile</Text>
-  </Container>
+  <>
+    <MenuBar />
+    <Container>
+      <Text>Profile</Text>
+    </Container>
+  </>
 );
 
 export default Profile;
