@@ -119,7 +119,7 @@ export const MobileMenu = styled.div`
   a {
     text-decoration: none;
     color: #fff;
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: center;
     transition: all 0.2s linear;
     &:hover {
