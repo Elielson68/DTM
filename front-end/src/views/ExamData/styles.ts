@@ -6,18 +6,29 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   max-width: 100%;
-  height: calc(100vh - 16vh);
-  padding: 2.5% 10%;
+  height: calc(100vh - 12vh);
+  @media (max-width: 768px) {
+    height: fit-content;
+    padding: 10% 0;
+  }
+`;
 
-  @media (max-width: 1440px) {
-    height: calc(100vh - 15vh);
-    padding: 2.5%;
+export const MainContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 75%;
+  height: 100%;
+
+  @media (max-width: 1920px) {
+    max-width: 100%;
   }
 
   @media (max-width: 768px) {
-    height: fit-content;
     flex-wrap: wrap;
-    padding: 5% 2.5%;
+    height: fit-content;
   }
 `;
 
@@ -35,22 +46,8 @@ export const Exam = styled.div`
     padding: 0;
     color: #fff;
   }
-
-  @media (max-width: 1024px) {
-    justify-content: center;
-    width: 75%;
-  }
-
-  @media (max-width: 1024px) {
-    width: 100%;
-    h1 {
-      font-size: 1.25rem;
-    }
-  }
-
-  @media (max-width: 425px) {
-    width: 100%;
-    height: fit-content;
+  @media (max-width: 768px) {
+    margin-bottom: 5%;
   }
 `;
 
@@ -59,36 +56,20 @@ export const Data = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 50%;
-  height: 75%;
+  width: 60%;
+  height: 80%;
   background-color: #fff;
   border-radius: 16px;
-  padding: 0 5%;
-
+  padding: 5%;
   @media (max-width: 1440px) {
-    width: 70%;
-    height: 70%;
-  }
-
-  @media (max-width: 1024px) {
-    padding: 0 5%;
     width: 80%;
     height: 80%;
   }
-
-  @media (max-height: 540px) {
-    width: 60%;
-    height: 100%;
+  @media (max-width: 1024px) {
+    width: 85%;
   }
-
-  @media (max-width: 768px) {
+  @media (max-width: 375px) {
     width: 80%;
-    height: 550px;
-  }
-
-  @media (max-width: 425px) {
-    width: 95%;
-    height: 500px;
   }
 `;
 
@@ -100,29 +81,64 @@ export const TextInfo = styled.div`
   width: 100%;
   height: fit-content;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
   span {
-    font-size: 1rem;
-    margin-bottom: 5px;
+    font-size: 2em;
+    margin-bottom: 10px;
   }
   h3 {
     margin: 0;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 2em;
+  }
+
+  &:last-of-type{
+    margin-bottom: 0;
+  }
+  @media (max-width: 375px) {
+    span {
+      font-size: 1.5em;
+    }
+    h3 {
+      font-size: 1.5em;
+    }
   }
 `;
 
-export const MeasurementInfo = styled(TextInfo)`
+export const MeasurementInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: fit-content;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  span {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
   span:last-child {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
-    margin-bottom: 2%;
-    width: 40%;
-    height: 25px;
+    font-size: 2em;
+    padding: 5%;
+    width: 50%;
+    height: 100%;
+    padding: 10px;
     background-color: #009f93;
     border-radius: 16px;
     color: #fff;
+  }
+
+  @media (max-width: 375px) {
+    span {
+      font-size: 1.5em;
+      &:last-child{
+        font-size: 1.5em;
+      }
+    }
   }
 `;
 
@@ -130,52 +146,51 @@ export const Pictures = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   height: 100%;
   width: 100%;
   color: #fff;
-  overflow-y: visible;
   text-align: center;
-  overflow-y: visible;
   h1 {
-    &:first-child {
-      margin: 0;
-      margin-bottom: 2.5%;
+    margin: 0;
+    margin-bottom: 2.5%;
+    &:nth-child(3) {
+      margin-top: 2.5%;
     }
-    margin: 2.5% 0;
-  }
-  @media (max-width: 1024px) {
-    h1 {
-      font-size: 1.25rem;
-    }
-  }
-  @media (max-width: 768px) {
-    padding-top: 5%;
   }
 `;
 
-export const Picture = styled(Data)`
+export const Picture = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 0 5%;
   flex-direction: row;
   justify-content: center;
-  width: 45%;
-  height: 45%;
-  padding: 2%;
+  width: 60%;
+  height: 40%;
+  padding: 1%;
   img {
     border-radius: 16px;
     width: 100%;
     height: 100%;
   }
 
-  @media (max-width: 1440px) {
-    width: 50%;
-    height: 40%;
+  @media (max-width: 1920px) {
+    width: 40%;
   }
-
-  @media (max-width: 1024px) {
+  @media (max-width: 1440px) {
+    width: 60%;
+  }
+  @media (max-width: 1200px) {
     width: 70%;
   }
-
-  @media (max-height: 540px) {
-    width: 60%;
+  @media (max-width: 768px) {
+    width: 70%;
+  }
+  @media (max-width: 375px) {
+    width: 80%;
   }
 `;

@@ -4,23 +4,21 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  height: 15%;
+  height: 12%;
   border-bottom: 1vh solid #fff;
   background-color: #ba324f;
-  padding: 0 5%;
   position: sticky;
   .menu-icon {
     display: none;
   }
 
   @media (max-width: 1024px) {
-    position: sticky;
     border-bottom: none;
     .menu-icon {
       display: inline;
-      :hover {
+      &:hover {
         cursor: pointer;
       }
       img {
@@ -28,6 +26,20 @@ export const Container = styled.div`
         height: 40px;
       }
     }
+  }
+`;
+
+export const MainContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 75%;
+  height: 100%;
+  @media (max-width: 1440px) {
+    padding: 0 5%;
+    max-width: 100%;
   }
 `;
 
@@ -50,19 +62,20 @@ export const Options = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  width: 65%;
+  justify-content: center;
+  width: 55%;
+  height: 100%;
   span {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 100%;
-    margin: 0 3%;
+    margin: 0 5%;
     a {
       text-decoration: none;
       color: #fff;
-      font-size: 23px;
+      font-size: 1.5em;
       text-align: center;
       transition: all 0.2s linear;
       &:hover {
@@ -93,7 +106,7 @@ export const MobileMenu = styled.div`
   height: 30%;
   position: fixed;
   background-color: #ba324f;
-  margin-top: -2vh;
+  margin-top: -2.5vh;
   span {
     display: flex;
     flex-direction: row;
@@ -102,14 +115,11 @@ export const MobileMenu = styled.div`
     justify-content: center;
     height: fit-content;
     margin: 0 5% 0 0;
-    &:last-child {
-      margin: 0 5% 0 0;
-    }
   }
   a {
     text-decoration: none;
     color: #fff;
-    font-size: 1rem;
+    font-size: 1em;
     text-align: center;
     transition: all 0.2s linear;
     &:hover {

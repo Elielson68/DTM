@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from "react";
-import { Container, Logo, Options, MobileMenu } from "./styles";
+import { Container, Logo, Options, MobileMenu, MainContent } from "./styles";
 import MenuIcon from "../../assets/img/menu-icon.png";
 
 export default function MenuBar() {
@@ -17,6 +17,7 @@ export default function MenuBar() {
   return (
     <>
       <Container>
+        <MainContent>
         <Logo>
           <h1>DTM</h1>
           <p>evaluation</p>
@@ -41,6 +42,8 @@ export default function MenuBar() {
         <span onClick={() => setShow(!show)} className="menu-icon">
           <img src={MenuIcon} alt="" />
         </span>
+        </MainContent>
+        
       </Container>
       {show && (
           <MobileMenu>
