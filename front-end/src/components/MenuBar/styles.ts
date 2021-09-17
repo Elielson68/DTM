@@ -104,7 +104,7 @@ export const MobileMenu = styled.div`
   justify-content: space-evenly;
   width: 100%;
   height: 30%;
-  position: fixed;
+  position: sticky;
   background-color: #ba324f;
   margin-top: -2.5vh;
   span {
