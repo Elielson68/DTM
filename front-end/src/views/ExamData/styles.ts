@@ -21,7 +21,6 @@ export const MainContent = styled.div`
   width: 100%;
   max-width: 75%;
   height: 100%;
-  border: 1px solid white;
 
   @media (max-width: 1920px) {
     max-width: 100%;
@@ -40,7 +39,6 @@ export const Exam = styled.div`
   justify-content: center;
   height: 100%;
   width: 100%;
-  border: 1px solid red;
   h1 {
     text-align: center;
     margin: 0;
@@ -117,7 +115,6 @@ export const MeasurementInfo = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 2em;
-    margin-bottom: 10px;
     padding: 5%;
     width: 50%;
     height: 100%;
@@ -146,7 +143,6 @@ export const Pictures = styled.div`
   width: 100%;
   color: #fff;
   text-align: center;
-  border: 1px solid red;
   h1 {
     margin: 0;
     margin-bottom: 2.5%;
