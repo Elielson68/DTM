@@ -63,7 +63,10 @@ export const Data = styled.div`
   padding: 5%;
   @media (max-width: 1440px) {
     width: 80%;
-    height: 90%;
+    height: 80%;
+  }
+  @media (max-width: 1024px) {
+    width: 85%;
   }
   @media (max-width: 375px) {
     width: 80%;
@@ -78,6 +81,7 @@ export const TextInfo = styled.div`
   width: 100%;
   height: fit-content;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
   span {
     font-size: 2em;
     margin-bottom: 10px;
@@ -86,6 +90,10 @@ export const TextInfo = styled.div`
     margin: 0;
     margin-bottom: 10px;
     font-size: 2em;
+  }
+
+  &:last-of-type{
+    margin-bottom: 0;
   }
   @media (max-width: 375px) {
     span {
