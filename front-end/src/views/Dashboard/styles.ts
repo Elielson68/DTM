@@ -8,7 +8,6 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid yellow;
 
   @media (max-width: 768px) {
     height: calc(100vh - 13vh);
@@ -24,7 +23,6 @@ export const MainContent = styled.div`
   max-width: 75%;
   height: 100%;
   padding: 2.5% 5%;
-  border: 1px solid green;
   @media (max-width: 1440px) {
     padding: 5% 5%;
     max-width: 100%;
