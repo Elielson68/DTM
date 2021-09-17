@@ -63,7 +63,7 @@ export const Data = styled.div`
   padding: 5%;
   @media (max-width: 1440px) {
     width: 80%;
-    height: 80%;
+    height: 85%;
   }
   @media (max-width: 1024px) {
     width: 85%;
