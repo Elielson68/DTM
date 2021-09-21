@@ -6,10 +6,13 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 12%;
-  border-bottom: 1vh solid #fff;
+  height: 125px;
+  border-bottom: 10px solid #fff;
   background-color: #ba324f;
-  position: sticky;
+  position:fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
   .menu-icon {
     display: none;
   }
@@ -37,6 +40,7 @@ export const MainContent = styled.div`
   width: 100%;
   max-width: 75%;
   height: 100%;
+  
   @media (max-width: 1440px) {
     padding: 0 5%;
     max-width: 100%;
@@ -62,20 +66,19 @@ export const Options = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  width: 55%;
+  justify-content: space-between;
+  width: 50%;
   height: 100%;
   span {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    margin: 0 5%;
+    margin: 0 2.5%;
     a {
       text-decoration: none;
       color: #fff;
-      font-size: 1.5em;
+      font-size: 180%;
       text-align: center;
       transition: all 0.2s linear;
       &:hover {
@@ -104,9 +107,10 @@ export const MobileMenu = styled.div`
   justify-content: space-evenly;
   width: 100%;
   height: 30%;
-  position: sticky;
+  position: fixed;
   background-color: #ba324f;
-  margin-top: -2.5vh;
+  top: 110px;
+  z-index: 9998;
   span {
     display: flex;
     flex-direction: row;
