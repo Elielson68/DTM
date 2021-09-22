@@ -78,7 +78,7 @@ export const Options = styled.div`
     a {
       text-decoration: none;
       color: #fff;
-      font-size: 180%;
+      font-size: 100%;
       text-align: center;
       transition: all 0.2s linear;
       &:hover {
