@@ -1,179 +1,208 @@
 import styled from "styled-components";
 
-export const EditForm = styled.form`
-  width: 35%;
-  height: fit-content;
+export const Container = styled.div`
   display: flex;
-  margin-top: 1%;
-  padding: 3%;
-  background-color: #ffff;
-  border-radius: 15px;
-
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 125px;
+`;
+
+export const MainContent = styled.div`
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 75%;
+  height: 100%;
+
+  h1 {
+    margin: 0;
+    color: #fff;
+    margin-bottom: 1.5%;
+    font-size: 300%;
+  }
+
+  @media screen and (max-width: 1920px) {
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 1440px) {
+    h1 {
+      font-size: 200%;
+    }
+  }
+`;
+
+export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 3.5%;
+  width: 30%;
+  height: 80%;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 3%;
+  position: relative;
 
   h3 {
-    color: black;
-    font-size: 1rem;
+    margin: 0;
     align-self: flex-start;
+    font-size: 150%;
   }
 
-  @media (max-width: 1000px) {
-    width: 75%;
-  }
-`;
-
-export const DivisionLine = styled.hr`
-  border: 1px solid gray;
-  width: 100%;
-`
-
-export const EditInputs = styled.input`
-  height: 8%;
-  width: 100%;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  margin-bottom: 30px;
-  outline: none;
-  transition: linear 0.5s;
-
-  :hover {
-    border-bottom: 1.5px solid orange;
-    transition-delay: 0.1s;
-  }
-  :focus {
-    border-bottom: 1.5px solid orange;
-  }
-`;
-export const EditButton = styled.button`
-  border-radius: 1rem;
-  border: 1px solid white;
-  background-color: #f1ae02;
-  display: flex;
-  height: fit-content;
-  width: 85%;
-  color: white;
-  margin-top: 5%;
-  padding: 3%;
-  justify-content: center;
-  align-self: center;
-  font-weight: bolder;
-  font-size: 0.9rem;
-`;
-
-export const ChooseGender = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: row; 
-    align-self: center;
-    justify-content: flex-start;
+  input {
     width: 100%;
-
-    .masculinoDiv{
-        background-color: #009F93;
-        border-radius: 15px;
-        padding: 8px;
-        width: 25%;
-        margin-right: 20px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        label {
-            color: #FFFF;
-            font-wights: bold;
-            font-size: 0.8rem;
-        }
-    }
-
-    .femininoDiv{
-        background-color: #009F93;
-        border-radius: 15px;
-        padding: 8px;
-        width: 25%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-
-        label {
-            color: #FFFF;
-            font-wights: bold;
-            font-size: 0.8rem;
-        }
-    }
-
-    @media(max-width: 1000px){
-
-        .masculinoDiv{
-            width: 100%;
-        }
-
-        .femininoDiv{
-            width: 100%;
-        }
-    }
-
-
-
-`;
-export const FeelsPain = styled.div`
-display: flex;
-align-items: center;
-flex-direction: row; 
-align-self: center;
-justify-content: flex-start;
-width: 100%;
-
-
-    .pain{
-        background-color: #009F93;
-        border-radius: 15px;
-        padding: 8px;
-        margin-right: 20px;
-        width: 60px;
-
-        label {
-            color: #FFFF;
-            font-wights: bold;
-            font-size: 0.8rem;
-        }
-    }
-    .noPain{
-        background-color: #009F93;
-        border-radius: 15px;
-        padding: 8px;
-        margin-right: 20px;
-        width: 60px;
-
-        label {
-            color: #FFFF;
-            font-wights: bold;
-            font-size: 0.8rem;
-        }
-    }
-    }
-`
-export const Container = styled.div`
-  background-color: #102e4a;
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-
-  h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    color: white;
-    margin-top: -1%;
+    outline: none;
+    border: none;
+    padding: 1% 0;
+    font-size: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 2%;
   }
 
-  @media(max-width: 360px) {
+  @media screen and (max-width: 1920px) {
+    h3 {
+      font-size: 150%;
+    }
+    input {
+      font-size: 100%;
+    }
+  }
+
+  @media screen and (max-width: 1440px) {
+    h3 {
+      font-size: 150%;
+    }
+    input {
+      font-size: 100%;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 80%;
+    h3 {
+      font-size: 200%;
+    }
+    input {
+      font-size: 150%;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    width: 80%;
+    h3 {
+      font-size: 150%;
+    }
+    input {
+      font-size: 100%;
+    }
+  }
+`;
+
+export const RatioDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: aliceblue;
+  width: 100%;
+  height: fit-content;
+  margin-top: 2%;
+  margin-bottom: 4%;
+  .ratio1,
+  .ratio2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: fit-content;
     height: fit-content;
+    border-radius: 16px;
+    background: #009f93;
+    padding: 2.5% 5%;
+    input {
+      width: fit-content;
+      height: fit-content;
+      margin: 0;
+      padding: 0;
+      background: none;
+      margin-right: 5%;
+    }
+    label {
+      margin: 0;
+      padding: 0;
+      font-size: 100%;
+      color: #ffffff;
+      background: none;
+    }
+  }
+
+  .ratio1 {
+    margin-right: 5%;
+  }
+
+  @media screen and (max-width: 1920px) {
+    .ratio1,
+    .ratio2 {
+      height: 100%;
+      label {
+        font-size: 120%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1440px) {
+    .ratio1,
+    .ratio2 {
+      label {
+        font-size: 75%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .ratio1,
+    .ratio2 {
+      height: 100%;
+      label {
+        font-size: 120%;
+      }
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .ratio1,
+    .ratio2 {
+      height: 120%;
+      label {
+        font-size: 75%;
+      }
+    }
+  }
+`;
+
+export const Button = styled.button`
+  background: #f1ae02;
+  border-radius: 16px;
+  width: 100%;
+  height: 7.5%;
+  outline: none;
+  border: none;
+  font-size: 150%;
+  line-height: 21px;
+  color: #ffffff;
+  transition: linear 0.2s;
+  &:hover {
+    background-color: #ac7c00;
+    cursor: pointer;
+    width: 65%;
+  }
+  @media screen and (max-width: 1440px) {
+    font-size: 100%;
   }
 `;
 

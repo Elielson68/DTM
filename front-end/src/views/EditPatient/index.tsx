@@ -2,32 +2,24 @@
 import React from "react";
 import MenuBar from "../../components/MenuBar";
 
-import {
-  Container,
-  EditForm,
-  EditButton,
-  EditInputs,
-  ChooseGender,
-  FeelsPain,
-  DivisionLine,
-} from "./styles";
+import { Container, Button, Card, RatioDiv, MainContent } from "./styles";
 
 export default function EditPatient() {
   const [currentRadioValue, setCurrentValue] = React.useState("on");
 
   return (
-    <>
+    <Container>
       <MenuBar />
-      <Container>
-        <h2>Editar Paciente</h2>
-        <EditForm>
+      <MainContent>
+        <h1>Editar Paciente</h1>
+        <Card>
           <h3>Nome</h3>
-          <EditInputs type="text" name="Nome" />
+          <input type="text" name="Nome" />
           <h3>Data de Nascimento</h3>
-          <EditInputs type="date" name="Data de Nascimento" />
+          <input type="date" name="Data de Nascimento" />
           <h3>Gênero</h3>
-          <ChooseGender>
-            <div className="masculinoDiv">
+          <RatioDiv>
+            <div className="ratio1">
               <input
                 name="gender"
                 value="on"
@@ -38,7 +30,7 @@ export default function EditPatient() {
               <label htmlFor="gender">MASCULINO</label>
               {currentRadioValue === "on"}
             </div>
-            <div className="femininoDiv">
+            <div className="ratio2">
               <input
                 name="gender"
                 value="off"
@@ -46,18 +38,17 @@ export default function EditPatient() {
                 onChange={(e) => setCurrentValue(e.target.value)}
                 defaultChecked={currentRadioValue === "off"}
               />
-              <label htmlFor="gender">FEMININO</label>
+              <label htmlFor="gender">FEMENINO</label>
               {currentRadioValue === "off"}
             </div>
-          </ChooseGender>
-          <DivisionLine />
+          </RatioDiv>
           <h3>Email</h3>
-          <EditInputs type="email" name="Email" />
+          <input type="email" name="Email" />
           <h3>Celular</h3>
-          <EditInputs type="tel" name="Celular" />
+          <input type="tel" name="Celular" />
           <h3>Sente dor?</h3>
-          <FeelsPain>
-            <div className="pain">
+          <RatioDiv>
+            <div className="ratio1">
               <input
                 name="pain"
                 value="on"
@@ -68,7 +59,7 @@ export default function EditPatient() {
               <label htmlFor="pain">SIM</label>
               {currentRadioValue === "on"}
             </div>
-            <div className="noPain">
+            <div className="ratio2">
               <input
                 name="pain"
                 value="off"
@@ -79,13 +70,12 @@ export default function EditPatient() {
               <label htmlFor="pain">NÃO</label>
               {currentRadioValue === "off"}
             </div>
-          </FeelsPain>
-          <DivisionLine />
-          <EditButton type="submit" name="Salvar">
+          </RatioDiv>
+          <Button type="submit" name="Salvar">
             SALVAR
-          </EditButton>
-        </EditForm>
-      </Container>
-    </>
+          </Button>
+        </Card>
+      </MainContent>
+    </Container>
   );
 }
