@@ -1,6 +1,8 @@
 import React from "react";
+// Importando do Chart.JS
+import { Line } from 'react-chartjs-2';
+// Importando o Menu Navbar
 import MenuBar from "../../components/MenuBar";
-
 // Importando os styled components
 import {
   Container,
@@ -9,7 +11,7 @@ import {
   MainText,
   Info,
   Data,
-  Line,
+  Linha,
   EditButton,
   DeleteButton,
   DivButton,
@@ -22,7 +24,21 @@ import {
   DataTable,
   LineTable,
   InfoTable,
+  DivChart
 } from "../PatientDetails/styles";
+
+const data = {
+  labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+  datasets: [
+    {
+      label: 'Distância',
+      data: [12, 19, 3, 5, 2, 3],
+      fill: false,
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgba(255, 99, 132, 0.2)',
+    },
+  ],
+};
 
 export default function PatientDetails() {
   return (
@@ -34,22 +50,22 @@ export default function PatientDetails() {
           <Card>
             <Info>Nome</Info>
             <Data>Rodrigo Silva</Data>
-            <Line />
+            <Linha />
             <Info>Idade</Info>
             <Data>18</Data>
-            <Line />
+            <Linha />
             <Info>Genêro</Info>
             <Data>Masculino</Data>
-            <Line />
+            <Linha />
             <Info>E-mail</Info>
             <Data>rodrigo.silva123@gmail.com</Data>
-            <Line />
+            <Linha />
             <Info>Telefone</Info>
             <Data>(91) 1234-5678</Data>
-            <Line />
+            <Linha />
             <Info>Sente dor?</Info>
             <Data>Sim</Data>
-            <Line />
+            <Linha />
             <br />
             <DivButton>
               <EditButton>Editar</EditButton>
@@ -78,7 +94,11 @@ export default function PatientDetails() {
             </DivTable>
           </CardTop>
           <br />
-          <CardBottom />
+          <CardBottom>
+            <DivChart>
+              <Line data={ data }/>
+            </DivChart>
+          </CardBottom>
         </DivRight>
       </Container>
     </>
