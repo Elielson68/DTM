@@ -36,7 +36,6 @@ export const Exam = styled.div`
   justify-content: center;
   height: 100%;
   width: 70%;
-  border: 1px solid yellow;
   padding: 5% 0;
   h1 {
     text-align: center;
@@ -193,7 +192,6 @@ export const Pictures = styled.div`
   height: 100%;
   width: 100%;
   text-align: center;
-  border: 1px solid red;
   padding: 5% 0;
   @media screen and (max-width: 1920px) {
     flex-direction: row;
