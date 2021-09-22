@@ -2,90 +2,80 @@
 import React from "react";
 import MenuBar from "../../components/MenuBar";
 
-import {
-  Container,
-  RegisterButton,
-  RegisterInputs,
-  RegisterForm,
-  ChooseGender,
-  FeelsPain,
-  DivisionLine,
-} from "./styles";
+import { Container, Button, Card, RatioDiv, MainContent } from "./styles";
 
 export default function RegisterPatient() {
   const [currentRadioValue, setCurrentValue] = React.useState("on");
 
   return (
-    <>
+    <Container>
       <MenuBar />
-      <Container>
-        <h2>Cadastrar Paciente</h2>
-        <RegisterForm>
-          <h3>Nome</h3>
-          <RegisterInputs type="text" name="Nome" />
-          <h3>Data de Nascimento</h3>
-          <RegisterInputs type="date" name="Data de Nascimento" />
-          <h3>Gênero</h3>
-          <ChooseGender>
-            <div className="masculinoDiv">
-              <input
-                name="gender"
-                value="on"
-                type="radio"
-                onChange={(e) => setCurrentValue(e.target.value)}
-                defaultChecked={currentRadioValue === "on"}
-              />
-              <label htmlFor="gender">MASCULINO</label>
-              {currentRadioValue === "on"}
-            </div>
-            <div className="femininoDiv">
-              <input
-                name="gender"
-                value="off"
-                type="radio"
-                onChange={(e) => setCurrentValue(e.target.value)}
-                defaultChecked={currentRadioValue === "off"}
-              />
-              <label htmlFor="gender">FEMININO</label>
-              {currentRadioValue === "off"}
-            </div>
-          </ChooseGender>
-          <DivisionLine />
-          <h3>Email</h3>
-          <RegisterInputs type="email" name="Email" />
-          <h3>Celular</h3>
-          <RegisterInputs type="tel" name="Celular" />
-          <h3>Sente dor?</h3>
-          <FeelsPain>
-            <div className="pain">
-              <input
-                name="pain"
-                value="on"
-                type="radio"
-                onChange={(e) => setCurrentValue(e.target.value)}
-                defaultChecked={currentRadioValue === "on"}
-              />
-              <label htmlFor="pain">SIM</label>
-              {currentRadioValue === "on"}
-            </div>
-            <div className="noPain">
-              <input
-                name="pain"
-                value="off"
-                type="radio"
-                onChange={(e) => setCurrentValue(e.target.value)}
-                defaultChecked={currentRadioValue === "off"}
-              />
-              <label htmlFor="pain">NÃO</label>
-              {currentRadioValue === "off"}
-            </div>
-          </FeelsPain>
-          <DivisionLine />
-          <RegisterButton type="submit" name="Salvar">
-            SALVAR
-          </RegisterButton>
-        </RegisterForm>
-      </Container>
-    </>
+      <MainContent>
+      <h1>Cadastrar Paciente</h1>
+      <Card>
+        <h3>Nome</h3>
+        <input type="text" name="Nome" />
+        <h3>Data de Nascimento</h3>
+        <input type="date" name="Data de Nascimento" />
+        <h3>Gênero</h3>
+        <RatioDiv>
+          <div className="ratio1">
+            <input
+              name="gender"
+              value="on"
+              type="radio"
+              onChange={(e) => setCurrentValue(e.target.value)}
+              defaultChecked={currentRadioValue === "on"}
+            />
+            <label htmlFor="gender">MASCULINO</label>
+            {currentRadioValue === "on"}
+          </div>
+          <div className="ratio2">
+            <input
+              name="gender"
+              value="off"
+              type="radio"
+              onChange={(e) => setCurrentValue(e.target.value)}
+              defaultChecked={currentRadioValue === "off"}
+            />
+            <label htmlFor="gender">FEMENINO</label>
+            {currentRadioValue === "off"}
+          </div>
+        </RatioDiv>
+        <h3>Email</h3>
+        <input type="email" name="Email" />
+        <h3>Celular</h3>
+        <input type="tel" name="Celular" />
+        <h3>Sente dor?</h3>
+        <RatioDiv>
+          <div className="ratio1">
+            <input
+              name="pain"
+              value="on"
+              type="radio"
+              onChange={(e) => setCurrentValue(e.target.value)}
+              defaultChecked={currentRadioValue === "on"}
+            />
+            <label htmlFor="pain">SIM</label>
+            {currentRadioValue === "on"}
+          </div>
+          <div className="ratio2">
+            <input
+              name="pain"
+              value="off"
+              type="radio"
+              onChange={(e) => setCurrentValue(e.target.value)}
+              defaultChecked={currentRadioValue === "off"}
+            />
+            <label htmlFor="pain">NÃO</label>
+            {currentRadioValue === "off"}
+          </div>
+        </RatioDiv>
+        <Button type="submit" name="Salvar">
+          SALVAR
+        </Button>
+      </Card>
+      </MainContent>
+    </Container>
   );
 }
