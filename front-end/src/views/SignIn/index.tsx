@@ -1,5 +1,5 @@
 import React from "react";
-import RegisterModal from "../../components/RegisterModal/index";
+import RegisterModal from "../../components/registerModal";
 import {
   AboutText,
   Button,

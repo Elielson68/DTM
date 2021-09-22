@@ -11,10 +11,10 @@ export const Container = styled.div`
   align-items: center;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: calc(100vh - 16vh);
   @media(max-width: 1170px) {
     flex-direction: column;
-    height: 100%;
+    height: 120vh;
   }
 `;
 // Lado Esquerdo
@@ -45,6 +45,8 @@ export const CardLeft = styled.div`
     font-size: 15px;
     font-weight: bold;
     margin-left: 90px;
+    margin-top: 2%;
+    margin-bottom: 2%;
     @media(max-width: 425px) {
       text-align: center;
       margin-left: 0px;
@@ -52,6 +54,8 @@ export const CardLeft = styled.div`
   }
   h4 {
     text-align: center;
+    margin-bottom: 2%;
+    margin-top: 3%;
   }
 `;
 export const Div = styled.div`
@@ -119,9 +123,6 @@ export const CardRight = styled.div`
   height: 490px;
   border-radius: 15px;
   margin-left: 10px;
-  @media(max-width: 1170px) {
-    margin-bottom: 250px;
-  }
   @media(max-width: 665px) {
     width: 500px;
     padding: 20px;

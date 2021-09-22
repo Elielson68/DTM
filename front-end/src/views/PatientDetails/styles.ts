@@ -9,13 +9,9 @@ export const Container = styled.div`
     align-items: center;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: calc(100vh - 16vh);
     @media(max-width: 1280px) {
         flex-direction: column;
-        height: 100%;
-    }
-    @media(max-width: 330px) {
-        width: 110vw;
         height: 150vh;
     }
 `;
@@ -36,26 +32,31 @@ export const Card = styled.div`
         width: 350px;
     }
     @media(max-width: 431px) {
-        width: 250px;
+        width: 300px;
     }
 `;
 export const Info = styled.p`
+    margin-top: 4%;
+    margin-bottom: 4%;
     @media(max-width: 1280px) {
         text-align: center;
     }
 `;
 export const Data = styled.h3`
+    margin-top: 4.6%;
+    margin-bottom: 4.6%;
     @media(max-width: 1280px) {
         text-align: center;
     }
 `;
 export const MainText = styled.h1`
     color: #ffffff;
+    padding: 10px;
     @media(max-width: 736px) {
         text-align: center;
     }
 `;
-export const Line = styled.div`
+export const Linha = styled.div`
     border: 0.5px solid #808080;
     width: 100%;
 `;
@@ -108,7 +109,8 @@ export const NewExamButtom = styled.button`
     border-radius: 20px;
     width: 200px;
     height: 40px;
-    margin: 20px 0px 0px 250px;
+    margin-top: 10px;
+    margin-left: 250px;
     cursor: pointer;
     @media(max-width: 736px) {
         margin: 0 auto;
@@ -116,7 +118,7 @@ export const NewExamButtom = styled.button`
 `;
 export const CardTop = styled.div`
     background-color: #ffffff;
-    width: 752px;
+    width: 100%;
     height: 315px;
     padding: 10px;
     border-radius: 20px;
@@ -140,10 +142,9 @@ export const CardTop = styled.div`
 `;
 export const CardBottom = styled.div`
     background-color: white;
-    width: 745px;
-    height: 315px;
-    padding: 15px 0px 15px 30px;
+    width: 100%;
     border-radius: 20px;
+    padding: 5px;
     @media(max-width: 1280px) {
         margin-bottom: 20px;
     }
@@ -177,4 +178,12 @@ export const InfoTable = styled.p`
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
+`;
+export const DivChart = styled.div`
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    margin: 0 auto;
+    width: 100%;
+    height: 50%;
 `;
