@@ -34,6 +34,8 @@ http://localhost:5000
 
 ## 4. Crie um banco postgreSQL no docker
 
+ATENÇÃO: durante a criação do banco, atente de deixar o nome do banco como postgres e a senha como postgres.
+
 Para a criação do banco basta utilizar o tutorial abaixo:
 
 https://felixgilioli.medium.com/como-rodar-um-banco-de-dados-postgres-com-docker-6aecf67995e1
