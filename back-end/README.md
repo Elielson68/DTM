@@ -38,7 +38,20 @@ Para a criação do banco basta utilizar o tutorial abaixo:
 
 https://felixgilioli.medium.com/como-rodar-um-banco-de-dados-postgres-com-docker-6aecf67995e1
 
-## 5. Possíveis problemas nos pacotes
+## 5. Criando tabelas
+
+No terminal digite o comando:
+
+    dotnet ef migrations add InitialCreate
+
+Para criar o migrations e então execute o comando:
+    
+    dotnet ef database update InitialCreate
+
+Para atualizar o banco no docker.
+
+
+## 6. Possíveis problemas nos pacotes
 
 Caso ocorra qualquer erro durante a execução do comando dotnet run e o erro seja referente aos pacotes, basta seguir os passos do link abaixo:
 
