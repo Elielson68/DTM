@@ -22,7 +22,13 @@ namespace DTMBackend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
             services.AddMvc();
             //Configuration.GetConnectionString("ContextConnectionString")
             services.AddEntityFrameworkNpgsql().AddDbContext<AppDtmContext>(options => options.UseNpgsql(Configuration.GetConnectionString("ContextConnectionString")));
@@ -32,11 +38,7 @@ namespace DTMBackend
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "DTM API ASP.NET", Version = "v1" }));
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAllOrigins",
-                    builder => builder.AllowAnyOrigin());
-            });
+            
             
         }
 
@@ -53,9 +55,11 @@ namespace DTMBackend
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseCors("AllowAllOrigins");
             app.UseHttpsRedirection();
+            
             app.UseStaticFiles();
-
+            
             app.UseRouting();
 
             app.UseAuthorization();
@@ -68,6 +72,7 @@ namespace DTMBackend
                 c.RoutePrefix = string.Empty;
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
             });
+            //app.UseCors(option => option.AllowAnyOrigin());
             
         }
     }
