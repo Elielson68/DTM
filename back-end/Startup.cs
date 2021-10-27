@@ -22,6 +22,7 @@ namespace DTMBackend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddCors();
             services.AddMvc();
             //Configuration.GetConnectionString("ContextConnectionString")
             services.AddEntityFrameworkNpgsql().AddDbContext<AppDtmContext>(options => options.UseNpgsql(Configuration.GetConnectionString("ContextConnectionString")));
@@ -31,6 +32,12 @@ namespace DTMBackend
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "DTM API ASP.NET", Version = "v1" }));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin());
+            });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +68,7 @@ namespace DTMBackend
                 c.RoutePrefix = string.Empty;
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
             });
+            
         }
     }
 }
