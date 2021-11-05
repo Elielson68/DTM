@@ -11,7 +11,7 @@ namespace DTMBackend.Models
         {
 
         }
-        public UsersDb(DTO.Users user)
+        public UsersDb(DTO.Create.Users user)
         {
             Name = user.Name;
             Email = user.Email;

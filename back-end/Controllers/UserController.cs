@@ -7,7 +7,8 @@ using System.Text;
 using System.Web;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using DTMBackend.DTO;
+using DTMBackend.DTO.Create;
+using DTMBackend.DTO.Request;
 
 namespace DTMBackend.Controllers
 {
@@ -30,10 +31,10 @@ namespace DTMBackend.Controllers
             {
                 return NotFound("Empty list");
             }
-            List<Users> listDTO = new List<Users>();
+            List<DTO.Request.Users> listDTO = new List<DTO.Request.Users>();
             foreach(UsersDb u in list)
             {
-                Users user = new Users(u.UsersId, u.Name, u.Password, u.Email, u.RegisteredNumber);
+                DTO.Request.Users user = new DTO.Request.Users(u.UsersId, u.Name, u.Email, u.RegisteredNumber);
                 listDTO.Add(user);
             }
             return Ok(listDTO);
@@ -47,7 +48,7 @@ namespace DTMBackend.Controllers
             {
                 return NotFound("Not found");
             }
-            Users user = new Users(userFind.UsersId, userFind.Name, userFind.Password, userFind.Email, userFind.RegisteredNumber);
+            DTO.Request.Users user = new DTO.Request.Users(userFind.UsersId, userFind.Name, userFind.Email, userFind.RegisteredNumber);
             return Ok(user);
         }
         [HttpGet("{id}/exam")]
@@ -68,7 +69,7 @@ namespace DTMBackend.Controllers
             return Ok(listDTO);
         }
         [HttpPost]
-        public IActionResult Post(Users newUser)
+        public IActionResult Post(DTO.Create.Users newUser)
         {
             if (newUser == null)
             {
@@ -77,11 +78,13 @@ namespace DTMBackend.Controllers
             UsersDb user = new UsersDb(newUser);
             _userContext.Users.Add(user);
             _userContext.SaveChanges();
-            return Ok(_userContext.Users.ToList());
+            UsersDb userDB = _userContext.Users.OrderByDescending(u => u.UsersId).FirstOrDefault();
+            DTO.Request.Users userFind = new DTO.Request.Users(userDB.UsersId, userDB.Name, userDB.Email, userDB.RegisteredNumber);
+            return Ok(userFind);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Users newUser)
+        public IActionResult Put(int id, DTO.Create.Users newUser)
         {
             if (newUser == null)
             {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
-using DTMBackend.DTO;
+using DTMBackend.DTO.Create;
 
 namespace DTMBackend.Controllers
 {

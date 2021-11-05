@@ -16,7 +16,7 @@ namespace DTMBackend.Models
         {
 
         }
-        public ExamDb(DTO.Exam exam, PatientDb patient, UsersDb user)
+        public ExamDb(DTO.Create.Exam exam, PatientDb patient, UsersDb user)
         {
             Date = exam.Date;
             OpenMeasurementPx = exam.OpenMeasurementPx;
