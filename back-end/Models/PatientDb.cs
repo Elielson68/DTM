@@ -16,7 +16,7 @@ namespace DTMBackend.Models
         {
 
         }
-        public PatientDb(DTO.Patient patient)
+        public PatientDb(DTO.Create.Patient patient)
         {
             Name = patient.Name;
             DocNumber = patient.DocNumber;

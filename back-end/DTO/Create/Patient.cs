@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DTMBackend.DTO
+namespace DTMBackend.DTO.Create
 {
     public class Patient
     {

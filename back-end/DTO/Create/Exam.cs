@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using static DTMBackend.DTO.Patient;
+using static DTMBackend.DTO.Create.Patient;
 
-namespace DTMBackend.DTO
+namespace DTMBackend.DTO.Create
 {
     public class Exam
     {
