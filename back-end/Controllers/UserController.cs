@@ -83,6 +83,21 @@ namespace DTMBackend.Controllers
             return Ok(userFind);
         }
 
+        [HttpPost("/login")]
+        public IActionResult Login(DTO.Login.LoginUser loginUser)
+        {
+            if (loginUser == null)
+            {
+                return NotFound("Empty user");
+            }
+            
+            UsersDb userDB = _userContext.Users.FirstOrDefault(u => u.Email == loginUser.Email);
+            if(userDB == null) return NotFound("User not found");
+            if(userDB.Password != loginUser.Password) return NotFound("User not found");
+            DTO.Request.Users userFind = new DTO.Request.Users(userDB.UsersId, userDB.Name, userDB.Email, userDB.RegisteredNumber);
+            return Ok(userFind);
+        }
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, DTO.Create.Users newUser)
         {
