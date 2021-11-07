@@ -33,7 +33,7 @@ namespace DTMBackend.Models
 
         public string Name { get; set; }
 
-        public string DocNumber { get; set; }
+        public int DocNumber { get; set; }
 
         public string Email { get; set; }
         

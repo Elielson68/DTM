@@ -10,7 +10,7 @@ namespace DTMBackend.DTO.Create
     public class Users
     {
 
-        public Users(int id, string name, string password, string email, string register_number)
+        public Users(int id, string name, string password, string email, int register_number)
         {
             UsersId = id;
             Name = name;
@@ -35,7 +35,7 @@ namespace DTMBackend.DTO.Create
 
         [Required(ErrorMessage = "Campo RegisteredNumber não pode estar vazio.")]
         [MaxLength(100, ErrorMessage = "Número de caracteres no campo RegisteredNumber excedeu o limite permitido. Máximo de caracteres: 100")]
-        public string RegisteredNumber { get; set; }
+        public int RegisteredNumber { get; set; }
 
     }
 }
