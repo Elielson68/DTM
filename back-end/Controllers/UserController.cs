@@ -83,7 +83,7 @@ namespace DTMBackend.Controllers
             return Ok(userFind);
         }
 
-        [HttpPost("/login")]
+        [HttpPost("login")]
         public IActionResult Login(DTO.Login.LoginUser loginUser)
         {
             if (loginUser == null)
