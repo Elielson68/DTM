@@ -10,7 +10,7 @@ namespace DTMBackend.DTO.Create
 {
     public class Patient
     {
-            public Patient(int id, string name, string doc, string email, string age, string phone, string gender, string pain_choice, double initial_distance)
+            public Patient(int id, string name, int doc, string email, string age, string phone, string gender, string pain_choice, double initial_distance)
             {
                 PatientId = id;
                 Name = name;
@@ -29,8 +29,7 @@ namespace DTMBackend.DTO.Create
             public string Name { get; set; }
 
             [Required(ErrorMessage = "Campo DocNumber não pode estar vazio.")]
-            [MaxLength(100, ErrorMessage = "Número de caracteres no campo DocNumber excedeu o limite permitido. Máximo de caracteres: 100")]
-            public string DocNumber { get; set; }
+            public int DocNumber { get; set; }
 
             [Required(ErrorMessage = "Campo Email não pode estar vazio.")]
             [MaxLength(100, ErrorMessage = "Número de caracteres no campo Email excedeu o limite permitido. Máximo de caracteres: 100")]
