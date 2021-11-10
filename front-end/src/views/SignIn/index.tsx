@@ -1,5 +1,8 @@
 import React from "react";
+import Cookies from "universal-cookie/es6";
+import { useHistory } from "react-router-dom";
 import RegisterModal from "../../components/RegisterModal";
+import api from "../../services/api";
 import {
   AboutText,
   Button,
@@ -19,10 +22,28 @@ import {
 } from "./styles";
 
 export default function SignIn() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const [show, setShow] = React.useState(false);
+  const history = useHistory();
+
+  const cookies = new Cookies();
+
   function handleClose() {
     setShow(false);
     return show;
+  }
+
+  function handleLogin() {
+    const data = {
+      password,
+      email,
+    };
+    api.post("api/user/login", data).then(() => {
+      alert("Cadastro realizado com sucesso");
+      cookies.set("user", data, { path: "/" });
+      history.push('/dashboard');
+    });
   }
   return (
     <>
@@ -51,12 +72,22 @@ export default function SignIn() {
             <HeaderBar>ENTRE COM A SUA CONTA</HeaderBar>
             <Form>
               <Label>E-mail</Label>
-              <Input placeholder="exemplo@email.com" type="email" />
+              <Input
+                placeholder="exemplo@email.com"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-              <Label>Matricula</Label>
-              <Input placeholder="12345678" type="number" />
+              <Label>Senha</Label>
+              <Input
+                placeholder="***************"
+                type="number"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <ForgotPasswordText>Esqueci Minha Senha</ForgotPasswordText>
-              <Button>Entrar</Button>
+              <Button onClick={handleLogin}>Entrar</Button>
               <RegisterText onClick={() => setShow(true)}>
                 Não tenho uma conta
               </RegisterText>
