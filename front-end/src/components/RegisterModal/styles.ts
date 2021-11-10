@@ -42,7 +42,7 @@ export const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 250px;
+  height: 300px;
   justify-content: center;
   
   input:last-child{
