@@ -29,7 +29,7 @@ namespace DTMBackend.DTO.Create
             public string Name { get; set; }
 
             [Required(ErrorMessage = "Campo DocNumber não pode estar vazio.")]
-            public int DocNumber { get; set; }
+            public long DocNumber { get; set; }
 
             [Required(ErrorMessage = "Campo Email não pode estar vazio.")]
             [MaxLength(100, ErrorMessage = "Número de caracteres no campo Email excedeu o limite permitido. Máximo de caracteres: 100")]

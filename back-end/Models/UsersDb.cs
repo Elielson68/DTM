@@ -25,7 +25,7 @@ namespace DTMBackend.Models
         
         public string Email { get; set; }
         
-        public int RegisteredNumber { get; set; }
+        public long RegisteredNumber { get; set; }
         
         public string Password { get; set; }
 
