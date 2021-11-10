@@ -34,8 +34,7 @@ namespace DTMBackend.DTO.Create
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Campo RegisteredNumber não pode estar vazio.")]
-        [MaxLength(100, ErrorMessage = "Número de caracteres no campo RegisteredNumber excedeu o limite permitido. Máximo de caracteres: 100")]
-        public int RegisteredNumber { get; set; }
+        public long RegisteredNumber { get; set; }
 
     }
 }
