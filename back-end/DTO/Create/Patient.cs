@@ -10,7 +10,7 @@ namespace DTMBackend.DTO.Create
 {
     public class Patient
     {
-            public Patient(int id, string name, int doc, string email, string age, string phone, string gender, string pain_choice, double initial_distance)
+            public Patient(int id, string name, long doc, string email, string age, string phone, string gender, string pain_choice, double initial_distance)
             {
                 PatientId = id;
                 Name = name;
